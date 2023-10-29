@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 04:37:17 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:40:30 by momox            ###   ########.fr       */
+/*   Created: 2023/10/29 04:48:39 by momox             #+#    #+#             */
+/*   Updated: 2023/10/29 04:48:43 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class FragTrap : public ClapTrap
 public:
 	FragTrap(void);
 	FragTrap(std::string Name);
-	FragTrap(const FragTrap& frag);
 	~FragTrap(void);
 
 	void highFivesGuys(void);

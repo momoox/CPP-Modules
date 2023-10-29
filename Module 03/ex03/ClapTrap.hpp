@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:59:30 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:40:11 by momox            ###   ########.fr       */
+/*   Updated: 2023/10/29 05:10:05 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ class ClapTrap
 {
 protected:
 	std::string _name;
-	unsigned int _Hitpoint;
-	unsigned int _Energy;
-	unsigned int _Attack;
+	static unsigned int _Hitpoint;
+	static unsigned int _Energy;
+	static unsigned int _Attack;
 
 public:
 	ClapTrap(void);
 	ClapTrap(std::string Name);
-	ClapTrap(const ClapTrap& clap);
 	~ClapTrap(void);
 
 	void attack(const std::string& target);

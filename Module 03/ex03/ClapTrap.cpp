@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 04:36:08 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:41:40 by momox            ###   ########.fr       */
+/*   Updated: 2023/10/29 04:48:15 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ ClapTrap::ClapTrap(std::string Name)
 	this->_Attack = 0;
 	this->_Energy = 10;
 	this->_Hitpoint = 10;
-}
-
-ClapTrap::ClapTrap(const ClapTrap& clap)
-{
-	std::cout << "Copy constructor called\n";
-	*this = clap;
 }
 
 std::string ClapTrap::getName(void) const

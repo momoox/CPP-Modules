@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 04:38:46 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:42:31 by momox            ###   ########.fr       */
+/*   Updated: 2023/10/29 04:48:34 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ FragTrap::FragTrap(std::string Name)
 	this->_Attack = 30;
 	this->_Energy = 100;
 	this->_Hitpoint = 100;
-}
-
-FragTrap::FragTrap(const FragTrap& frag)
-{
-	std::cout << "Copy constructor of FragTrap called\n";
-	*this = frag;
 }
 
 void FragTrap::highFivesGuys(void)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap copy.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 03:02:34 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:43:04 by momox            ###   ########.fr       */
+/*   Updated: 2023/10/29 04:36:48 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ ScavTrap::ScavTrap(std::string Name)
 	this->_Attack = 20;
 	this->_Energy = 50;
 	this->_Hitpoint = 100;
-}
-
-ScavTrap::ScavTrap(const ScavTrap &scav)
-{
-	std::cout << "Copy constructor called\n";
-	*this = scav;
 }
 
 void ScavTrap::guardGate()
