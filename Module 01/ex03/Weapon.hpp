@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:56:28 by momox             #+#    #+#             */
-/*   Updated: 2023/10/21 19:00:49 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:05:53 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define WEAPON_HPP
 
 # include <iostream>
-// # include "HumanA.hpp"
-// # include "HumanB.hpp"
 
 class Weapon
 {
