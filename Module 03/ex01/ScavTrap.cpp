@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 03:02:34 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 04:25:40 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:53:51 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ ScavTrap::ScavTrap(std::string Name)
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap is now in Gate Keeper mode.\n\n";
+	std::cout << "ScavTrap " << this->_name << " is now in Gate Keeper mode.\n\n";
 }
 
 ScavTrap::~ScavTrap(void)

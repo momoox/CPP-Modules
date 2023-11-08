@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:44 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 04:28:04 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:52:25 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		this->_Energy = this->_Energy - 1;
 		std::cout << "ClapTrap " << this->_name << " gained " << amount << " hit point.\n\n";
 		std::cout << "Curren hitpoint is " << this->getHitpoint() <<".\n\n";
+		std::cout << this->_Energy << " energy left.\n\n";
 	}
 	else if (this->_Hitpoint == 10)
 		std::cout << "clapTrap " << this->_name << " already has all his hit points.\n\n";
@@ -77,7 +78,6 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (this->_Hitpoint > 0 && (this->_Hitpoint - amount) > 0 && this->_Energy > 0)
 	{
 		this->setHitpoint(this->_Hitpoint - amount);
-		this->_Energy = this->_Energy - 1;
 		std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit point. " << this->getHitpoint() << " hit point left.\n\n";
 		if (this->_Hitpoint == 0)
 			std::cout << "ClapTrap " << this->_name << " has no hitpoint left.\n\n";
