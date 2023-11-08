@@ -5,28 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 00:30:55 by momox             #+#    #+#             */
-/*   Updated: 2023/11/04 22:17:10 by momox            ###   ########.fr       */
+/*   Created: 2023/11/04 19:00:23 by momox             #+#    #+#             */
+/*   Updated: 2023/11/04 21:40:31 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
-int	main(void)
+int main()
 {
-	Harl Harl;
-	std::string input;
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
 
-	while (1)
-	{
-		std::cout << std::endl;
-		std::cout << "Enter a level: " << std::endl;
-		if (!std::getline(std::cin, input))
-			 return (0);
-		std::cout << std::endl;
-		Harl.complain(input);
-		if (input == "EXIT")
-			break ;
-	}
-	return (0);
+	return 0;
 }

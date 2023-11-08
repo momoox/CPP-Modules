@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone_book_class.hpp                               :+:      :+:    :+:   */
+/*   phone_book.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:26:15 by momox             #+#    #+#             */
-/*   Updated: 2023/10/20 18:32:05 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/08 16:50:56 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_CLASS_HPP
-# define PHONE_BOOK_CLASS_HPP
+#ifndef PHONE_BOOK_HPP
+# define PHONE_BOOK_HPP
 
 #define NC "\e[0m"
 #define RED "\e[0;31m"
@@ -24,60 +24,6 @@
 
 # include <iostream>
 # include <iomanip>
-
-class Contact
-{
-public:
-	void add_contact(void);
-
-	void setName(std::string buff)
-	{
-		_name = buff;
-	}
-	void setLastName(std::string buff)
-	{
-		_lastName = buff;
-	}
-	void setNickname(std::string buff)
-	{
-		_nickname = buff;
-	}
-	void setPhoneNum(std::string buff)
-	{
-		_phoneNum = buff;
-	}
-	void setDarksecret(std::string buff)
-	{
-		_dark_secret = buff;
-	}
-	std::string getName(void) const
-	{
-		return (this->_name);
-	}
-	std::string getLastName(void) const
-	{
-		return (this->_lastName);
-	}
-	std::string getNickname(void) const
-	{
-		return (this->_nickname);
-	}
-	std::string getphoneNum(void) const
-	{
-		return (this->_phoneNum);
-	}
-	std::string getDarksecret(void) const
-	{
-		return (this->_dark_secret);
-	}
-
-private:
-	std::string _name;
-	std::string _lastName;
-	std::string _nickname;
-	std::string	_phoneNum;
-	std::string _dark_secret;
-};
 
 class PhoneBook
 {

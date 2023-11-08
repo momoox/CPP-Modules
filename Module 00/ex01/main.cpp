@@ -6,11 +6,12 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:25:47 by momox             #+#    #+#             */
-/*   Updated: 2023/10/20 16:50:20 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/08 16:51:43 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phone_book_class.hpp"
+#include "phone_book.hpp"
+#include "contact.hpp"
 
 void	welcome(void)
 {

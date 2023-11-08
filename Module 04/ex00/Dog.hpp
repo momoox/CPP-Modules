@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 00:30:55 by momox             #+#    #+#             */
-/*   Updated: 2023/11/04 22:17:10 by momox            ###   ########.fr       */
+/*   Created: 2023/11/04 19:12:18 by momox             #+#    #+#             */
+/*   Updated: 2023/11/04 19:14:29 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
 
-int	main(void)
+# include <iostream>
+# include "Animal.hpp"
+
+class Dog : public Animal
 {
-	Harl Harl;
-	std::string input;
+public:
+	Dog(void);
+	Dog(std::string Name);
+	Dog(const Dog& dog);
+	~Dog(void);
+};
 
-	while (1)
-	{
-		std::cout << std::endl;
-		std::cout << "Enter a level: " << std::endl;
-		if (!std::getline(std::cin, input))
-			 return (0);
-		std::cout << std::endl;
-		Harl.complain(input);
-		if (input == "EXIT")
-			break ;
-	}
-	return (0);
-}
+#endif

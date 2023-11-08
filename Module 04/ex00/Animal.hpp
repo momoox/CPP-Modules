@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 00:30:55 by momox             #+#    #+#             */
-/*   Updated: 2023/11/04 22:17:10 by momox            ###   ########.fr       */
+/*   Created: 2023/11/04 19:00:44 by momox             #+#    #+#             */
+/*   Updated: 2023/11/04 22:21:58 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-int	main(void)
+# include <iostream>
+
+class Animal
 {
-	Harl Harl;
-	std::string input;
+public:
+	Animal(void);
+	Animal(std::string Name);
+	Animal(const Animal& ani);
+	~Animal(void);
 
-	while (1)
-	{
-		std::cout << std::endl;
-		std::cout << "Enter a level: " << std::endl;
-		if (!std::getline(std::cin, input))
-			 return (0);
-		std::cout << std::endl;
-		Harl.complain(input);
-		if (input == "EXIT")
-			break ;
-	}
-	return (0);
-}
+	void makeSound(void);
+	std::string getType(void);
+protected:
+	std::string type;
+};
+
+#endif
