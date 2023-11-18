@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:17:10 by momox             #+#    #+#             */
-/*   Updated: 2023/11/15 18:05:02 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/18 19:34:46 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	WrongAnimal& operator = (const WrongAnimal& fixed);
 
 	std::string getType(void) const;
-	void makeSound() const;
+	virtual void makeSound() const;
 };
 
 #endif

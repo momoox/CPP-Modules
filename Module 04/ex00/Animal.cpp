@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:06 by momox             #+#    #+#             */
-/*   Updated: 2023/11/15 18:15:02 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/18 19:34:15 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ Animal& Animal::operator=(const Animal& fixed)
 
 void	Animal::makeSound() const
 {
-	if(this->_type == "Cat")
-		std::cout << "Meow\n";
-	if(this->_type == "Dog")
-		std::cout << "Bark\n";
+	std::cout << "Animal sound.\n";
 }
 
 Animal::~Animal(void)
