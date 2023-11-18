@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:59:30 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:40:11 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/08 20:21:02 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public:
 	ClapTrap(std::string Name);
 	ClapTrap(const ClapTrap& clap);
 	~ClapTrap(void);
+	ClapTrap& operator = (const ClapTrap& fixed);
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);

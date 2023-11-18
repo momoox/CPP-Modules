@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 02:54:46 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 03:39:50 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/08 20:20:56 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ public:
 	ScavTrap(void);
 	ScavTrap(std::string Name);
 	~ScavTrap(void);
+	ScavTrap& operator = (const ScavTrap& fixed);
 	void guardGate(void);
 };
 

@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: momox <momox@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/18 20:23:43 by momox             #+#    #+#              #
-#    Updated: 2023/11/18 17:12:06 by momox            ###   ########.fr        #
+#    Created: 2023/11/15 17:07:20 by momox             #+#    #+#              #
+#    Updated: 2023/11/15 17:20:05 by momox            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	phone_book
+NAME		:=	Animal
 
 # ------------------------------ Sources -----------------------------
 
-SRCS		:=	PhoneBook.cpp Contact.cpp main.cpp \
+SRCS		:=	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp \
 
 OBJ_DIR		:=	.objs
 OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
@@ -23,7 +23,7 @@ OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 BREW		:=	$(shell brew --prefix)
 CC			:=	c++
-FLAGS		:=	-Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+FLAGS		:=	-Wall -Wextra -Werror -std=c++98
 RM			:=	rm -rf
 
 $(OBJ_DIR)/%.o :%.cpp

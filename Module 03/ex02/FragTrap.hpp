@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 04:37:17 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:40:30 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/08 20:21:17 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ public:
 	FragTrap(std::string Name);
 	FragTrap(const FragTrap& frag);
 	~FragTrap(void);
+	FragTrap& operator = (const FragTrap& fixed);
 
 	void highFivesGuys(void);
 };

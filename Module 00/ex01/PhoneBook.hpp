@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone_book.hpp                                     :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:26:15 by momox             #+#    #+#             */
-/*   Updated: 2023/11/08 16:50:56 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/18 17:23:44 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_HPP
-# define PHONE_BOOK_HPP
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 #define NC "\e[0m"
 #define RED "\e[0;31m"
@@ -24,6 +24,7 @@
 
 # include <iostream>
 # include <iomanip>
+# include "Contact.hpp"
 
 class PhoneBook
 {
