@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 17:48:35 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 17:30:48 by momox            ###   ########.fr       */
+/*   Created: 2023/11/18 18:10:47 by momox             #+#    #+#             */
+/*   Updated: 2023/11/18 18:13:36 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "HumanA.hpp"
 
-# include <iostream>
-# include <iomanip>
-
-class Zombie
+HumanA::HumanA(std::string name, Weapon &gun)
 {
-public:
-	void announce(void);
-	void setName(std::string buff);
-	std::string getName(void) const;
-	Zombie(void);
-	~Zombie(void);
-private:
-	std::string _name;
-};
+	this->_name = name;
+	this->_gun = &gun;
+}
 
-Zombie* newZombie(std::string name);
-void	randomChump(std::string name);
+std::string HumanA::getName(void)
+{
+	return (this->_name);
+}
 
-#endif
+void HumanA::attack(void)
+{
+	std::cout << getName() << " attacks with their " << _gun->getType() << std::endl;
+}
+
+HumanA::~HumanA(void)
+{
+	return ;
+}

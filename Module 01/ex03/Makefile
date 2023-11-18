@@ -6,7 +6,7 @@
 #    By: momox <momox@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 20:54:50 by momox             #+#    #+#              #
-#    Updated: 2023/10/21 19:01:36 by momox            ###   ########.fr        #
+#    Updated: 2023/11/18 18:20:03 by momox            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:=	violence
 
 # ------------------------------ Sources -----------------------------
 
-SRCS		:=	main.cpp \
+SRCS		:=	main.cpp HumanA.cpp HumanB.cpp \
 
 OBJ_DIR		:=	.objs
 OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))

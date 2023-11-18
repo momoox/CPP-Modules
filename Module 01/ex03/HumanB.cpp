@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 17:48:35 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 17:30:48 by momox            ###   ########.fr       */
+/*   Created: 2023/11/18 18:13:54 by momox             #+#    #+#             */
+/*   Updated: 2023/11/18 18:16:41 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "HumanB.hpp"
 
-# include <iostream>
-# include <iomanip>
-
-class Zombie
+HumanB::HumanB(std::string name)
 {
-public:
-	void announce(void);
-	void setName(std::string buff);
-	std::string getName(void) const;
-	Zombie(void);
-	~Zombie(void);
-private:
-	std::string _name;
-};
+	this->_name = name;
+}
 
-Zombie* newZombie(std::string name);
-void	randomChump(std::string name);
+void HumanB::setWeapon(Weapon &club)
+{
+	this->_katana = &club;
+}
 
-#endif
+std::string HumanB::getName(void)
+{
+	return (this->_name);
+}
+
+void HumanB::attack(void)
+{
+	std::cout << getName() << " attacks with their " << _katana->getType() << std::endl;
+}
+
+HumanB::~HumanB(void)
+{
+	return ;
+}
