@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 19:43:21 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 22:10:14 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/27 20:19:08 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,28 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-int main()
-{
-	int	i = 0;
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+int main() {
+	Animal *animals[2];
 
-	
+	for (int i = 0; i < 2; i++) {
+		if (i % 2 == 0)
+			animals[i] = new Dog;
+		else
+			animals[i] = new Cat;
+	}
 
-	delete j;
-	delete i;
+	std::cout << std::endl;
 
-	return (0);
+	for (int i = 0; i < 2; i++) {
+		delete animals[i];
+	}
+
+	std::cout << std::endl << std::endl;
+
+	Cat *cat = new Cat;
+	Cat catcpy(*cat);
+
+	std::cout << std::endl;
+
+	delete cat;
 }

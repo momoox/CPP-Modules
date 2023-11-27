@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:31:25 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 17:23:23 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/21 19:02:50 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void PhoneBook::get_index(std::string buff)
 	int i = 1;
 	int	buffi = 0;
 
-	buffi = std::stoi(buff);
+	buffi = std::stoi(buff); //stoi c++11, à changer
 	if (buffi == 0)
 		return ;
 	while (buffi != i)

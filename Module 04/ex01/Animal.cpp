@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:06 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 22:04:37 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/27 20:25:35 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,12 @@ std::string Animal::getType(void) const
 
 Animal& Animal::operator=(const Animal& fixed)
 {
-	std::cout << "Copy assignment operator called\n";
-	this->_type = fixed.getType();
+	std::cout << "Copy assignment operator Animal called\n";
+	if (this != &fixed)
+	{
+		this->_type = fixed._type;
+		this->_brain = new Brain(*fixed._brain);
+	}
 	return (*this);
 }
 

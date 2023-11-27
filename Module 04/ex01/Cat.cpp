@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:13:10 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 22:12:49 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/27 20:25:22 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ void	Cat::makeSound() const
 
 Cat& Cat::operator=(const Cat& fixed)
 {
-	std::cout << "Copy assignment operator called\n";
-	this->_type = fixed.getType();
+	std::cout << "Copy assignment operator Cat called\n";
+	if (this != &fixed)
+	{
+		this->_type = fixed._type;
+		this->_brain = new Brain(*fixed._brain);
+	}
 	return (*this);
 }
 

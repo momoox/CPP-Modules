@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:13:29 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 22:05:49 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/27 20:23:01 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ private:
 public:
 	Cat(void);
 	Cat(const Cat& fixed);
-	~Cat(void);
+	virtual ~Cat(void);
 	Cat& operator = (const Cat& fixed);
 	
 	std::string getType(void) const;
-	void makeSound() const;
+	virtual void makeSound() const;
 };
 
 #endif
