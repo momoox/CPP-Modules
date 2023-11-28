@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:48:22 by momox             #+#    #+#             */
-/*   Updated: 2023/10/28 18:24:06 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/28 14:38:33 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ private:
 };
 
 std::ostream & operator<<(std::ostream &o, Fixed const &rhs);
+double	myPow(double base, int exponent);
 
 #endif

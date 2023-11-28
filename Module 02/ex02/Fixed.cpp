@@ -6,11 +6,30 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:12:01 by momox             #+#    #+#             */
-/*   Updated: 2023/10/28 18:30:18 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/28 14:38:53 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+double myPow(double base, int exponent)
+{
+    if (exponent == 0) {
+        return 1.0;
+    }
+
+    double result = 1.0;
+    if (exponent < 0) {
+        base = 1.0 / base;
+        exponent = -exponent;
+    }
+
+    for (int i = 0; i < exponent; ++i) {
+        result *= base;
+    }
+
+    return result;
+}
 
 /* ----------constructors----------- */
 Fixed::Fixed(void) 
@@ -30,7 +49,7 @@ Fixed::Fixed(const int value)
 
 Fixed::Fixed(const float value) 
 {
-	_fixed_point = roundf(value * pow(2, _fractional));
+	_fixed_point = roundf(value * myPow(2, _fractional));
 }
 
 
@@ -39,7 +58,7 @@ Fixed::Fixed(const float value)
 
 float Fixed::toFloat( void ) const 
 {
-	return (_fixed_point / pow(2, _fractional));
+	return (_fixed_point / myPow(2, _fractional));
 }
 
 int Fixed::toInt( void ) const 
