@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:59:30 by momox             #+#    #+#             */
-/*   Updated: 2023/11/08 20:20:32 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/28 14:41:10 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
-	// std::string getName(void) const;
 	void setHitpoint(int amount);
 	int getHitpoint() const;
 

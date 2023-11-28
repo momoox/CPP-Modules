@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:44 by momox             #+#    #+#             */
-/*   Updated: 2023/11/08 17:52:25 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/28 14:41:05 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ ClapTrap::ClapTrap(std::string Name)
 	this->_Energy = 10;
 	this->_Hitpoint = 10;
 }
-
-// std::string ClapTrap::getName(void) const
-// {
-// 	return (this->_name);
-// }
 
 void ClapTrap::setHitpoint(int amount)
 {
