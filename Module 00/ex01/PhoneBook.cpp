@@ -6,12 +6,31 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:31:25 by momox             #+#    #+#             */
-/*   Updated: 2023/11/21 19:02:50 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/28 14:26:16 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+
+int stringToInteger(const std::string& str)
+{
+    int result = 0;
+    int sign = 1;
+
+    size_t i = 0;
+    while (i < str.length() && std::isspace(str[i])) {
+        i++;
+    }
+    if (i < str.length() && (str[i] == '+' || str[i] == '-')) {
+        sign = (str[i++] == '-') ? -1 : 1;
+    }
+    while (i < str.length() && std::isdigit(str[i])) {
+        result = result * 10 + (str[i++] - '0');
+    }
+
+    return sign * result;
+}
 
 void	exit_phone(void)
 {
@@ -38,21 +57,21 @@ void PhoneBook::print_contact(void)
 {
 	int i = 1;
 	
-	std::cout << BBB << "--------------------------------------------------------------" << NC << std::endl;
-	std::cout << BBB << "|Index|First Name| Last Name|  Nickname|    Number|DarkSecret|" << NC << std::endl;
-	std::cout << BBB << "|-----|----------|----------|----------|----------|----------|" << NC << std::endl;
+	std::cout << "--------------------------------------------------------------" << std::endl;
+	std::cout << "|Index|First Name| Last Name|  Nickname|    Number|DarkSecret|" << std::endl;
+	std::cout << "|-----|----------|----------|----------|----------|----------|" << std::endl;
 	while (i <= 8)
 	{
-		std::cout << BMB << "|" << NC;
-		std::cout << BMB << std::setw(5) << i << "|" << NC;
-		std::cout << BMB << std::setw(10) << search_contact(repertory[i].getName()) << "|" << NC;
-		std::cout << BMB << std::setw(10) << search_contact(repertory[i].getLastName()) << "|" << NC;
-		std::cout << BMB << std::setw(10) << search_contact(repertory[i].getNickname()) << "|" << NC;
-		std::cout << BMB << std::setw(10) << search_contact(repertory[i].getphoneNum()) << "|" << NC;
-		std::cout << BMB << std::setw(10) << search_contact(repertory[i].getDarksecret()) << "|" << std::endl << NC;
+		std::cout << "|";
+		std::cout << std::setw(5) << i << "|";
+		std::cout << std::setw(10) << search_contact(repertory[i].getName()) << "|";
+		std::cout << std::setw(10) << search_contact(repertory[i].getLastName()) << "|";
+		std::cout << std::setw(10) << search_contact(repertory[i].getNickname()) << "|";
+		std::cout << std::setw(10) << search_contact(repertory[i].getphoneNum()) << "|";
+		std::cout << std::setw(10) << search_contact(repertory[i].getDarksecret()) << "|" << std::endl;
 		i++;
 	}
-	std::cout << BMB << " -------------------------------------------------------------" << NC << std::endl;
+	std::cout << " -------------------------------------------------------------" << std::endl;
 	std::cout << std::endl;
 }
 
@@ -61,7 +80,7 @@ void PhoneBook::get_index(std::string buff)
 	int i = 1;
 	int	buffi = 0;
 
-	buffi = std::stoi(buff); //stoi c++11, à changer
+	buffi = stringToInteger(buff);
 	if (buffi == 0)
 		return ;
 	while (buffi != i)
@@ -94,6 +113,7 @@ void PhoneBook::contact_list(void)
 	print_contact();
 	std::cout << "Enter an index to have details of a specific contact:  [_/8]" << std::endl;
 	std::cin >> buff;
+	// std::getline(std::cin, buff);
 	std::cout << std::endl;
 	if (buff == "1" || buff == "2" || buff == "3" || buff == "4" || buff == "5" || buff == "6" || buff == "7" || buff == "8")
 		get_index(buff);

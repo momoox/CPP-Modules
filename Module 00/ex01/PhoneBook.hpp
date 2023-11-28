@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:26:15 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 17:23:44 by momox            ###   ########.fr       */
+/*   Updated: 2023/11/28 14:24:41 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ public:
 void	welcome(void);
 void	exit_phone(void);
 void	commands(void);
+int		stringToInteger(const std::string& str);
 
 #endif
