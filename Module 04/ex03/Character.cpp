@@ -6,7 +6,7 @@
 /*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:21:19 by momox             #+#    #+#             */
-/*   Updated: 2023/12/09 19:32:39 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/09 20:27:52 by momox            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,11 @@ void Character::use(int idx, ICharacter& target)
 		return ;
 	}
 	if (idx < 4 && this->_inventory[idx])
+	{
 		(this->_inventory[idx])->use(target);
+		delete this->_inventory[idx];
+		this->_inventory[idx] = 0;
+	}
 }
 
 Character::~Character()
