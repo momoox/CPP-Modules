@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 03:02:34 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:43:04 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:47:57 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ ScavTrap::ScavTrap(const ScavTrap &scav)
 {
 	std::cout << "Copy constructor called\n";
 	*this = scav;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& src)
+{
+	(void)src;
+	return (*this);
 }
 
 void ScavTrap::guardGate()

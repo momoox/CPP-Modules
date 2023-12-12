@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:59:30 by momox             #+#    #+#             */
-/*   Updated: 2023/11/08 20:20:37 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:40:17 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ protected:
 public:
 	ClapTrap(void);
 	ClapTrap(std::string Name);
+	ClapTrap(const ClapTrap& src);
 	~ClapTrap(void);
 	ClapTrap& operator = (const ClapTrap& fixed);
 	void attack(const std::string& target);
