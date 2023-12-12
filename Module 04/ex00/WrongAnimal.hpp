@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:17:10 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 19:34:46 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:56:07 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ protected:
 public:
 	WrongAnimal(void);
 	WrongAnimal(const WrongAnimal& fixed);
-	~WrongAnimal(void);
-	WrongAnimal& operator = (const WrongAnimal& fixed);
+	virtual ~WrongAnimal(void);
+	WrongAnimal& operator = (const WrongAnimal& src);
 
 	std::string getType(void) const;
 	virtual void makeSound() const;

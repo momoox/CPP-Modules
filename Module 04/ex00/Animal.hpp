@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:13:43 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 19:24:53 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:55:21 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ protected:
 public:
 	Animal(void);
 	Animal(const Animal& ani);
-	~Animal(void);
-	Animal& operator = (const Animal& fixed);
+	virtual ~Animal(void);
+	Animal& operator = (const Animal& src);
 
 	virtual void makeSound() const;
 	std::string getType() const;

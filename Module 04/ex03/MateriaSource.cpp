@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:42:35 by momox             #+#    #+#             */
-/*   Updated: 2023/12/09 19:41:16 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 18:16:47 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void MateriaSource::learnMateria(AMateria* src)
 		if (this->_memory[i] == 0)
 		{
 			this->_memory[i] = src->clone();
-			// delete src;
+			delete src;
 			return ;
 		}
 	}
-	// delete src;
+	delete src;
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type)
@@ -66,6 +66,6 @@ AMateria* MateriaSource::createMateria(std::string const& type)
 
 MateriaSource::~MateriaSource()
 {
-	for (int i = 4; i > 0; i--)
+	for (int i = 0; i < 4; i++)
 		delete this->_memory[i];
 }

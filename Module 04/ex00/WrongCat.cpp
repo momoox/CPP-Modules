@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:26:17 by momox             #+#    #+#             */
-/*   Updated: 2023/11/15 18:05:07 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 18:00:46 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 WrongCat::WrongCat(void)
 {
 	std::cout << "WrongCat constructor called.\n";
+	this->_type = "Cat";
 }
 
 WrongCat::WrongCat(const WrongCat& fixed)
@@ -31,13 +32,14 @@ std::string WrongCat::getType(void) const
 
 void	WrongCat::makeSound() const
 {
-	std::cout << "Bark ?\n";
+	std::cout << "Moo\n";
 }
 
-WrongCat& WrongCat::operator=(const WrongCat& fixed)
+WrongCat& WrongCat::operator=(const WrongCat& src)
 {
 	std::cout << "Copy assignment operator called\n";
-	this->_type = fixed.getType();
+	if (this != &src)
+		this->_type = src._type;
 	return (*this);
 }
 

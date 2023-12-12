@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:21:19 by momox             #+#    #+#             */
-/*   Updated: 2023/12/09 20:27:52 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 18:15:02 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ void Character::use(int idx, ICharacter& target)
 
 Character::~Character()
 {
-	for (int i = 4; i > 0; i--)
+	for (int i = 0; i < 4; i++)
 		delete this->_inventory[i];
 }

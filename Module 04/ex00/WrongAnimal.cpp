@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:23:02 by momox             #+#    #+#             */
-/*   Updated: 2023/11/15 18:04:50 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 18:05:56 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ void	WrongAnimal::makeSound() const
 	std::cout << "Wrong animal sound\n";
 }
 
-WrongAnimal& WrongAnimal::operator=(const WrongAnimal& fixed)
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& src)
 {
 	std::cout << "Copy assignment operator called\n";
-	this->_type = fixed.getType();
+	if (this != &src)
+		this->_type = src._type;
 	return (*this);
 }
 
