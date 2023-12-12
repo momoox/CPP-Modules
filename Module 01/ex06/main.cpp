@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 19:59:56 by momox             #+#    #+#             */
-/*   Updated: 2023/10/22 21:19:35 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:13:41 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	main(int argc, char** argv)
 		return (1);
 	}
 
-	if (!std::strcmp(argv[1], "DEBUG"))
+	if ((std::string)argv[1] == "DEBUG")
 		level = 1;
-	else if (!std::strcmp(argv[1], "INFO"))
+	else if ((std::string)argv[1] == "INFO")
 		level = 2;
-	else if (!std::strcmp(argv[1], "WARNING"))
+	else if ((std::string)argv[1] == "WARNING")
 		level = 3;
-	else if (!std::strcmp(argv[1], "ERROR"))
+	else if ((std::string)argv[1] == "ERROR")
 		level = 4;
 
 	switch (level)

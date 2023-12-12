@@ -21,7 +21,6 @@ OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 # ------------------------------ Flags -------------------------------
 
-BREW		:=	$(shell brew --prefix)
 CC			:=	c++
 FLAGS		:=	-Wall -Wextra -Werror -std=c++98
 RM			:=	rm -rf

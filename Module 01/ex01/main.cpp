@@ -17,6 +17,6 @@ int	main(void)
 	Zombie* zomb;
 
 	zomb = zombieHorde(10, "Patrick");
-	delete(zomb);
+	delete[] zomb;
 	return (0);
 }

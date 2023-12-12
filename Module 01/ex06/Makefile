@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: momox <momox@student.42.fr>                +#+  +:+       +#+         #
+#    By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 19:17:14 by momox             #+#    #+#              #
-#    Updated: 2023/10/22 20:01:31 by momox            ###   ########.fr        #
+#    Updated: 2023/12/12 17:11:07 by mgeisler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 # ------------------------------ Flags -------------------------------
 
-BREW		:=	$(shell brew --prefix)
 CC			:=	c++
 FLAGS		:=	-Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 RM			:=	rm -rf
