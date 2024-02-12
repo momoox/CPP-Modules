@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	std::string buff;
 	std::string str1;
 	std::string str2;
+	std::string newFile;
 	size_t	pos;
 
 	if (argc != 4)
@@ -27,12 +28,13 @@ int	main(int argc, char **argv)
 		std::cout << "Error input." << std::endl;
 		return (1);
 	}
+	newFile = (std::string)argv[1] += ".replace";
 	str1 = argv[2];
 	str2 = argv[3];
 	file.open(argv[1]);
 	if (!file.is_open())
 		return (std::cout << "Error opening file." << std::endl, 1);
-	outfile.open((std::string)argv[1] += ".replace");
+	outfile.open(newFile.c_str());
 	if (!outfile.is_open())
 		return (std::cout << "Error creating output file." << std::endl, 1);
 	while (std::getline(file, buff))

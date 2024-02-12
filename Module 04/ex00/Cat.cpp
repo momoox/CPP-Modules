@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:13:10 by momox             #+#    #+#             */
-/*   Updated: 2023/11/15 18:06:48 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:53:47 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	Cat::makeSound() const
 	std::cout << "Meow\n";
 }
 
-Cat& Cat::operator=(const Cat& fixed)
+Cat& Cat::operator=(const Cat& src)
 {
+	(void)src;
 	std::cout << "Copy assignment operator called\n";
-	this->_type = fixed.getType();
 	return (*this);
 }
 

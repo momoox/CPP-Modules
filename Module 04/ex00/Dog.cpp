@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:13:01 by momox             #+#    #+#             */
-/*   Updated: 2023/11/15 18:04:39 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:54:33 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	Dog::makeSound() const
 	std::cout << "Bark\n";
 }
 
-Dog& Dog::operator=(const Dog& fixed)
+Dog& Dog::operator=(const Dog& src)
 {
+	(void)src;
 	std::cout << "Copy assignment operator called\n";
-	this->_type = fixed.getType();
 	return (*this);
 }
 

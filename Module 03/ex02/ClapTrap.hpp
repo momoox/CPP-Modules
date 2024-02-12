@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:59:30 by momox             #+#    #+#             */
-/*   Updated: 2023/11/08 20:21:02 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:50:19 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	ClapTrap(std::string Name);
 	ClapTrap(const ClapTrap& clap);
 	~ClapTrap(void);
-	ClapTrap& operator = (const ClapTrap& fixed);
+	ClapTrap& operator = (const ClapTrap& src);
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
@@ -40,14 +40,5 @@ public:
 	void setHitpoint(int amount);
 	int getHitpoint() const;
 };
-
-// class ScavTrap : public ClapTrap
-// {
-// public:
-// 	ScavTrap(void);
-// 	ScavTrap(std::string Name);
-// 	~ScavTrap(void);
-// 	void guardGate(void);
-// };
 
 #endif

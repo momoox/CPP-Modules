@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:13:24 by momox             #+#    #+#             */
-/*   Updated: 2023/11/15 18:04:44 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:54:07 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ public:
 	Dog(void);
 	Dog(const Dog& fixed);
 	~Dog(void);
-	Dog& operator = (const Dog& fixed);
+	Dog& operator = (const Dog& src);
 	
 	std::string getType(void) const;
 	void makeSound() const;

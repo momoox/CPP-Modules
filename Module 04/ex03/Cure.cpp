@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:55:58 by momox             #+#    #+#             */
-/*   Updated: 2023/12/09 18:44:16 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 18:15:10 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,5 @@ Cure* Cure::clone() const
 {
 	return (new Cure(*this));
 }
-
-// void Cure::use(ICharacter& target)
-// {
-// 	std::cout << "* heals " << target.getName() << "'s wounds *\n";
-// }
 
 Cure::~Cure() {}

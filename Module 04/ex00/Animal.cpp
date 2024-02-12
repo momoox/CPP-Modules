@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:06 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 19:34:15 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:55:49 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ std::string Animal::getType(void) const
 	return (this->_type);
 }
 
-Animal& Animal::operator=(const Animal& fixed)
+Animal& Animal::operator=(const Animal& src)
 {
 	std::cout << "Copy assignment operator called\n";
-	this->_type = fixed.getType();
+	if (this != &src)
+		this->_type = src._type;
 	return (*this);
 }
 

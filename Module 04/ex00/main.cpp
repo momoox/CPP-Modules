@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:11:03 by momox             #+#    #+#             */
-/*   Updated: 2023/11/18 19:41:09 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:58:55 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main()
 	j->makeSound();
 	std::cout << "meta does ";
 	meta->makeSound();
-	std::cout << "wrong does ";
+	std::cout << "wrong" << wrong->getType() << " does ";
 	wrong->makeSound();
 	delete(meta);
 	delete(j);

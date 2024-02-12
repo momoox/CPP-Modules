@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 00:34:03 by momox             #+#    #+#             */
-/*   Updated: 2023/10/22 19:16:19 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:03:07 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ Harl::~Harl(void)
 	return ;
 }
 
+//creer un nouveau type
 void Harl::complain( std::string level )
 {
-	typedef void (Harl::*fct)(void);
+	typedef void (Harl::*harl)(void);
 	std::string level_check[4] = {"debug", "info", "warning", "error"};
-	fct array[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	harl array[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	for (int i = 0; i < 4; i++)
 		if (level == level_check[i])
 			(this->*array[i])();

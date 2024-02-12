@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 04:38:46 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 15:11:06 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:48:00 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ FragTrap::FragTrap(const FragTrap& frag)
 {
 	std::cout << "Copy constructor of FragTrap called\n";
 	*this = frag;
+}
+
+FragTrap& FragTrap::operator=(const FragTrap& src)
+{
+	(void)src;
+	return (*this);
 }
 
 void FragTrap::highFivesGuys(void)

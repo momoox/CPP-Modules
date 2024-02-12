@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: momox <momox@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 04:36:08 by momox             #+#    #+#             */
-/*   Updated: 2023/10/29 14:41:40 by momox            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:45:42 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,23 @@ ClapTrap::ClapTrap(std::string Name)
 	this->_Hitpoint = 10;
 }
 
+
 ClapTrap::ClapTrap(const ClapTrap& clap)
 {
 	std::cout << "Copy constructor called\n";
 	*this = clap;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& src)
+{
+	if (this != &src)
+	{
+		this->_name = src._name;
+		this->_Hitpoint = src._Hitpoint;
+		this->_Energy = src._Energy;
+		this->_Attack = src._Attack;
+	}
+	return (*this);
 }
 
 std::string ClapTrap::getName(void) const
