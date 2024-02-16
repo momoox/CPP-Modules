@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:08:06 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/13 21:19:48 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:54:21 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <fstream>
-# include "AForm.hpp"
+# include "../AForm/AForm.hpp"
 
 class AForm;
 
@@ -37,7 +37,9 @@ public:
 	int				getGrade() const;
 	void			decgrade();
 	void			incgrade();
-	void 			executeForm(AForm const & form);
+	void			signForm(const AForm &rhs);
+
+	virtual void executeForm(AForm const &form);
 
 	class GradeTooHighException : public std::exception
 	{

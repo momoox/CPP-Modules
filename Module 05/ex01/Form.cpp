@@ -6,17 +6,17 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 22:04:08 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/13 19:37:36 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:05:25 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form(std::string Name, bool Signed, const int Grade_to_sign, const int Grade_to_execute) : _name(Name), _signed(Signed), _grade_to_sign(Grade_to_sign), _grade_to_execute(Grade_to_execute){	
+Form::Form(std::string Name, bool Signed, const int Grade_to_sign, const int Grade_to_execute) : _name(Name), _signed(Signed), _gradeToSign(Grade_to_sign), _gradeToExecute(Grade_to_execute){	
 }
 
-Form::Form(const Form& rhs) : _name(getName()), _grade_to_sign(getGradeToSign()), _grade_to_execute(getGradeToExecute()){
+Form::Form(const Form& rhs) : _name(getName()), _gradeToSign(getGradeToSign()), _gradeToExecute(getGradeToExecute()){
 	*this = rhs;
 }
 
@@ -29,11 +29,11 @@ bool Form::getSigned() const{
 }
 
 int	Form::getGradeToSign() const{
-	return (this->_grade_to_sign);
+	return (this->_gradeToSign);
 }
 
 int	Form::getGradeToExecute() const{
-	return (this->_grade_to_execute);
+	return (this->_gradeToExecute);
 }
 
 void	Form::beSigned(const Bureaucrat& rhs){

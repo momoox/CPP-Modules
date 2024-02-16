@@ -6,14 +6,14 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:27:09 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/13 21:43:09 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:49:53 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const Bureaucrat& rhs){
-	
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137){
+	this->_targetName = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs){
@@ -22,20 +22,34 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs){
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& rhs){
 	if (this != &rhs)
-		// this->_grade = rhs._grade;
+		this->_targetName = rhs._targetName;
 	return (*this);
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
-	if (executor.getGrade() <= 137)
+	if (executor.getGrade() <= this->getGradeToExecute() && this->getSign() == true)
 	{
-		// AForm::setSign(true); c caca ca
 		std::string Name = executor.getName() + "_shrubbery";
-		std::ofstream MyFile(Name);
-		MyFile << "ASCII TREES JSP CE QUE C'EST";
+		std::ofstream outfile(Name.c_str());
+		outfile << "               # #### #### " << std::endl;
+    	outfile << "            ### __#|### |/#### " << std::endl;
+        outfile << "           ##__#/ _||/##/_/##/_# " << std::endl;
+        outfile << "         ###  __###|/ # # ### " << std::endl;
+        outfile << "       ##___#___## | #/###_/_#### " << std::endl;
+        outfile << "      ## #### #   #| /  #### ##/## " << std::endl;
+        outfile << "       __#_--###`  |{,###---###-~ " << std::endl;
+        outfile << "                   }{ " << std::endl;
+        outfile << "                  }}{ " << std::endl;
+        outfile << "                  }}{ " << std::endl;
+        outfile << "                  {{} " << std::endl;
+        outfile << "            , -=-~{ .-^- _ " << std::endl;
+		outfile.close();
 	}
 	else
+	{
+		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << std::endl << std::endl;
 		throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){

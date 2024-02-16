@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:48:56 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/13 19:38:33 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:05:25 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Form
 private:
 	const std::string 	_name;
 	bool				_signed;
-	const int			_grade_to_sign;
-	const int			_grade_to_execute;
+	const int			_gradeToSign;
+	const int			_gradeToExecute;
 public:
 	Form(std::string Name, bool Signed, const int Grade_to_sign, const int Grade_to_execute);
 	Form(const Form& rhs);

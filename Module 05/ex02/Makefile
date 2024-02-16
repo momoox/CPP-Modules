@@ -6,7 +6,7 @@
 #    By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 16:07:48 by mgeisler          #+#    #+#              #
-#    Updated: 2024/02/12 23:00:02 by mgeisler         ###   ########.fr        #
+#    Updated: 2024/02/16 17:55:30 by mgeisler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,12 @@ NAME		:=	Bureaucrat
 
 # ------------------------------ Sources -----------------------------
 
-SRCS		:=	main.cpp Bureaucrat.cpp Form.cpp\
+SRCS		:=	main.cpp \
+				class/Bureaucrat/Bureaucrat.cpp \
+				class/AForm/AForm.cpp \
+				class/Shrubbery/ShrubberyCreationForm.cpp \
+				class/Robotomy/RobotomyRequestForm.cpp \
+				class/Presidential/PresidentialPardonForm.cpp
 
 OBJ_DIR		:=	.objs
 OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))

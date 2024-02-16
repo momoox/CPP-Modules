@@ -6,13 +6,15 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:55:37 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/13 21:15:37 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:50:06 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const Bureaucrat& rhs){
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm ("RobotomyRequestForm", 72, 45){
+	this->_targetName = target;
+	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs){
@@ -21,28 +23,25 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs){
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rhs){
 	if (this != &rhs)
-		// this->_grade = rhs._grade;
+		this->_targetName = rhs._targetName;
 	return (*this);
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
-	if (executor.getGrade() <= 45)
+	if (executor.getGrade() <= this->getGradeToExecute() && this->getSign() == true)
 	{
-		static int odds = 100;	
-
 		std::cout << "Drilling noises in the distance..." << std::endl;
-		if (odds >= 0)
-		{
-			if (odds % 2)
-				std::cout << executor.getName() << " has been robotomized successfully." << std::endl;
-			else
-				std::cout << "Robotomy has failed on " << executor.getName() << "." << std::endl;
-		}
+		std::srand(std::time(0));
+		if (std::rand() % 2)
+			std::cout << executor.getName() << " has been robotomized successfully." << std::endl << std::endl;
 		else
-			std::cout << "An error occured, relaunch the program." << std::endl;
+			std::cout << "Robotomy has failed on " << executor.getName() << "." << std::endl << std::endl;
 	}
 	else
+	{
+		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << std::endl << std::endl;
 		throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(){
