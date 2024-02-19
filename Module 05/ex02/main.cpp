@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 21:40:42 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/16 17:52:55 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:01:23 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,8 @@ int	main()
 	catch (std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
+
+	delete f1;
+	delete f2;
+	delete f3;
 }

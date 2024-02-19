@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:39:01 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/16 17:48:13 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:00:58 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,6 @@ AForm& AForm::operator=(const AForm& rhs){
 		this->_signed = rhs._signed;
 	return (*this);
 }
-
-// std::ostream &operator<<(std::ostream &out, const AForm &rhs){
-// 	out << "📄" << rhs.getName() << ":" << std::endl;
-// 	out << "Status: " << rhs.getSigned() << std::endl;
-// 	out << "Grade to sign: " << rhs.getGradeToSign() << std::endl;
-// 	out << "Grade to execute: " << rhs.getGradeToExecute() << std::endl;
-// 	return (out);
-// }
 
 AForm::~AForm(){
 }
