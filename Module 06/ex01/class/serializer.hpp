@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:07:57 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/29 15:54:16 by mgeisler         ###   ########.fr       */
+/*   Created: 2024/02/25 15:06:32 by mgeisler          #+#    #+#             */
+/*   Updated: 2024/02/27 18:35:47 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-int	main()
-{
-	Bureaucrat	bur("Mike", 45);
+# include <iostream>
+# include <stdint.h>
+# include "../data/dataStruct.hpp"
 
-	std::cout << bur;
-	try
-	{
-		bur.incgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
-	try
-	{
-		bur.decgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
-	return (0);
-}
+class Serializer{
+private:
+	Serializer();
+public:
+	Serializer(const Serializer &src);
+	virtual ~Serializer();
+	Serializer &operator = (const Serializer &rhs);
+
+	static uintptr_t serialize(Data* ptr);
+	static Data* deserialize(uintptr_t raw);
+	
+};
+
+#endif

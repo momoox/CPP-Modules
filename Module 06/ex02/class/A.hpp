@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:07:57 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/29 15:54:16 by mgeisler         ###   ########.fr       */
+/*   Created: 2024/02/27 19:25:16 by mgeisler          #+#    #+#             */
+/*   Updated: 2024/02/27 19:43:15 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#ifndef A_HPP
+# define A_HPP
 
-int	main()
-{
-	Bureaucrat	bur("Mike", 45);
+# include <iostream>
+# include "Base.hpp"
 
-	std::cout << bur;
-	try
-	{
-		bur.incgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
-	try
-	{
-		bur.decgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
-	return (0);
-}
+class A : public Base{
+public:
+	A();
+	virtual ~A();
+
+};
+
+#endif

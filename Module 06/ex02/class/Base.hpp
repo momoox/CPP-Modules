@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:07:57 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/29 15:54:16 by mgeisler         ###   ########.fr       */
+/*   Created: 2024/02/27 19:24:07 by mgeisler          #+#    #+#             */
+/*   Updated: 2024/02/27 19:52:38 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#ifndef BASE_HPP
+# define BASE_HPP
 
-int	main()
-{
-	Bureaucrat	bur("Mike", 45);
+# include <iostream>
+# include "A.hpp"
+# include "B.hpp"
+# include "C.hpp"
 
-	std::cout << bur;
-	try
-	{
-		bur.incgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
-	try
-	{
-		bur.decgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
-	return (0);
-}
+class Base {
+public:
+	virtual ~Base();
+	
+	Base * generate(void);
+	void identify(Base* p);
+	void identify(Base& p);
+};
+
+#endif

@@ -5,35 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:07:57 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/29 15:54:16 by mgeisler         ###   ########.fr       */
+/*   Created: 2024/02/27 17:51:02 by mgeisler          #+#    #+#             */
+/*   Updated: 2024/02/27 18:30:12 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "data/dataStruct.hpp"
+#include "class/serializer.hpp"
 
-int	main()
-{
-	Bureaucrat	bur("Mike", 45);
+int	main(){
+	Data data;
 
-	std::cout << bur;
-	try
-	{
-		bur.incgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
-	try
-	{
-		bur.decgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
+	data.age = 24;
+	data.name = "Steve";
+
+	std::cout << "Before serialiation: " << data.age << ", " << data.name << std::endl;
+
+	uintptr_t encode = Serializer::serialize(&data);
+	Data *result = Serializer::deserialize(encode);
+
+	std::cout << "After serialisation: " << result->age << ", " << result->name << std::endl;
+
 	return (0);
 }

@@ -5,35 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:07:57 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/29 15:54:16 by mgeisler         ###   ########.fr       */
+/*   Created: 2024/02/19 16:25:39 by mgeisler          #+#    #+#             */
+/*   Updated: 2024/02/25 13:34:53 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "class/Scalar.hpp"
 
-int	main()
-{
-	Bureaucrat	bur("Mike", 45);
-
-	std::cout << bur;
-	try
-	{
-		bur.incgrade();
+int	main(int argc, char **argv){
+	if (argc != 2) {
+		std::cout << "Wrong number of arguments." << std::endl;
+		return (1);
 	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
-	try
-	{
-		bur.decgrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << bur;
+	std::string input = (std::string)argv[1];
+	Scalar::convert(input);
 	return (0);
 }
