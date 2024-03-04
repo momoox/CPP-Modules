@@ -6,32 +6,30 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:41:19 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/28 19:20:16 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:51:08 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
-
-// ! Including the typeinfo header is forbidden.
-
-Base::Base() {}
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 Base::~Base() {}
 
-Base* Base::generate(void){
-	srand(3);
-
-	int value = rand();
+Base* generate(void){
+	std::srand(time(0));
+	int value = std::rand() % 3;
 	Base* inst;
 
 	switch(value){
-		case 1:
+		case 0:
 			inst = new A;
 			break;
-		case 2:
+		case 1:
 			inst = new B;
 			break;
-		case 3:
+		case 2:
 			inst = new C;
 			break;
 	}
@@ -39,14 +37,41 @@ Base* Base::generate(void){
 	return(inst);
 }
 
-void Base::identify(Base* p){
-	// It prints the actual type of the object pointed to by p: "A", "B" or "C".
-	// jsp encore comment faire
+void identify(Base* p){
+
+	if (dynamic_cast<A*>(p))
+		std::cout << "Object type for pointer p is A." << std::endl;
+	else if (dynamic_cast<B*>(p))
+		std::cout << "Object type for pointer p is B." << std::endl;
+	else if (dynamic_cast<C*>(p))
+		std::cout << "Object type for pointer p is C." << std::endl;
+	else
+		std::cout << "Invalid object type." << std::endl;
 }
 
-void Base::identify(Base& p){
-	// It prints the actual type of the object pointed to by p: "A", "B" or "C".
-	// Using a pointer inside this function is forbidden.
+void identify(Base& p){
+	try{
+		A &t = dynamic_cast<A&>(p);
+		(void)t;
+		std::cout << "Object type for reference p is A." << std::endl;
+	}
+	catch (std::exception &e){
+		// std::cout << e.what() << std::endl;
+	}
+	try{
+		B &t = dynamic_cast<B&>(p);
+		(void)t;
+		std::cout << "Object type for reference p is B." << std::endl;
+	}
+	catch (std::exception &e){
+		// std::cout << e.what() << std::endl;
+	}
+	try{
+		C &t = dynamic_cast<C&>(p);
+		(void)t;
+		std::cout << "Object type for reference p is C." << std::endl;
+	}
+	catch (std::exception &e){
+		// std::cout << e.what() << std::endl;
+	}
 }
-
-//use dynamic_cast

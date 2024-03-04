@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:25:16 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/27 19:43:15 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:29:42 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 # include "Base.hpp"
 
 class A : public Base{
-public:
-	A();
-	virtual ~A();
-
 };
 
 #endif
