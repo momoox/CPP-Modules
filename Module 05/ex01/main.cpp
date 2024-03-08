@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:48:18 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/29 15:58:16 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:53:34 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ int	main(){
 	catch (std::exception &e){
 		std::cout << e.what();
 	}
-
-	std::cout << f1 << std::endl;
-	std::cout << f2 << std::endl;
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:08:01 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/13 03:06:52 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:52:32 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,33 @@ int	Bureaucrat::getGrade() const{
 	return (this->_grade);
 }
 
-void	Bureaucrat::incgrade(){
-	if (this->_grade + 1 > 150)
-		throw Bureaucrat::GradeTooLowException();
-	else
-		this->_grade++;
-}
-
-void	Bureaucrat::decgrade(){
+void	Bureaucrat::incgrade()
+{
 	if (this->_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		this->_grade--;
 }
 
+void	Bureaucrat::decgrade()
+{
+	if (this->_grade + 1 > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade++;
+}
+
 void	Bureaucrat::signForm(const Form& rhs){
 	if (rhs.getSigned() == true)
-		std::cout << this->getName() << " signed " << rhs.getName() << std::endl;
+		std::cout << this->getName() << " signed " << rhs.getName() << std::endl << std::endl;
 	else
-		std::cout << this->getName() << " couldn't sign " << rhs.getName() << std::endl;
-		throw Bureaucrat::GradeTooLowException();
+	{
+		std::cout << this->getName() << " couldn't sign " << rhs.getName() << " because ";
+		if (this->getGrade() < rhs.getGradeToSign())
+			throw Bureaucrat::GradeTooHighException();
+		else
+			throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs){

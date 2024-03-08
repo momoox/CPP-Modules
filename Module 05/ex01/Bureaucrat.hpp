@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:08:06 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/13 19:38:45 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:52:19 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ public:
 	public:
 		virtual const char *what() const throw()
 		{
-			return ("\n");
+			return ("grade is too high !\n\n");
 		}
 	};
 
@@ -53,7 +53,7 @@ public:
 	public:
 		virtual const char *what() const throw()
 		{
-			return ("\n");
+			return ("grade is too low !\n\n");
 		}
 	};
 };
