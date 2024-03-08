@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:08:01 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/12 19:08:25 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:42:10 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,18 @@ int	Bureaucrat::getGrade() const
 
 void	Bureaucrat::incgrade()
 {
-	if (this->_grade + 1 > 150)
-		throw Bureaucrat::GradeTooLowException();
-	else
-		this->_grade++;
-}
-
-void	Bureaucrat::decgrade()
-{
 	if (this->_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		this->_grade--;
+}
+
+void	Bureaucrat::decgrade()
+{
+	if (this->_grade + 1 > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade++;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs)
