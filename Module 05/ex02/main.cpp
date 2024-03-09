@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 21:40:42 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/19 15:01:23 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:45:21 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	main()
 	AForm *f1 = new ShrubberyCreationForm("Shrubbery");
 	AForm *f2 = new RobotomyRequestForm("Robotomy");
 	AForm *f3 = new PresidentialPardonForm("Presidential");
+
+	std::cout << b1.getName() << " grade is "<< b1.getGrade() << std::endl;
+	std::cout << b2.getName() << " grade is "<< b2.getGrade() << std::endl;
+	std::cout << b3.getName() << " grade is "<< b3.getGrade() << std::endl << std::endl;
 
 	try{
 		f1->beSigned(b1);

@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 21:01:17 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/16 17:50:13 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:53:59 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const{
-	if (executor.getGrade() <= this->getGradeToExecute() && this->getSign() == true)
+	if (executor.getGrade() <= this->getGradeToExecute() && this->getSigned() == true)
+	{
+		std::cout << "Execution succeeded." << std::endl;
 		std::cout << executor.getName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	}
 	else
 	{
-		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << std::endl << std::endl;
+		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << " because ";
 		throw Bureaucrat::GradeTooLowException();
 	}
 }

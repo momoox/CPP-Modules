@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:39:01 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/19 15:00:58 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:50:41 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ std::string	AForm::getName() const{
 	return (this->_name);
 }
 
-bool AForm::getSign() const{
+bool AForm::getSigned() const{
 	return (this->_signed);
 }
 
@@ -43,8 +43,11 @@ void	AForm::beSigned(const Bureaucrat& rhs){
 		this->_signed = true;
 	else
 	{
-		std::cout << this->getName() << " couldn't be signed by " << rhs.getName() << std::endl << std::endl;
-		throw Bureaucrat::GradeTooLowException();
+		std::cout << this->getName() << " couldn't be signed by " << rhs.getName() << " because ";
+		if (this->getGradeToSign() < rhs.getGrade())
+			throw Bureaucrat::GradeTooLowException();
+		else
+			throw Bureaucrat::GradeTooHighException();
 	}
 }
 

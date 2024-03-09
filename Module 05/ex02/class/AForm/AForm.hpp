@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:08:41 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/16 17:54:33 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:03:15 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	AForm& operator = (const AForm& rhs);
 
 	std::string getName(void) const;
-	bool		getSign(void) const;
+	bool		getSigned(void) const;
 	int			getGradeToSign() const;
 	int			getGradeToExecute() const;
 	void		beSigned(const Bureaucrat& rhs);

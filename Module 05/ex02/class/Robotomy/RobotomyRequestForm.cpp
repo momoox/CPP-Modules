@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:55:37 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/16 17:50:06 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:53:49 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
-	if (executor.getGrade() <= this->getGradeToExecute() && this->getSign() == true)
+	if (executor.getGrade() <= this->getGradeToExecute() && this->getSigned() == true)
 	{
+		std::cout << "Execution succeeded." << std::endl;
 		std::cout << "Drilling noises in the distance..." << std::endl;
 		std::srand(std::time(0));
 		if (std::rand() % 2)
@@ -39,7 +40,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
 	}
 	else
 	{
-		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << std::endl << std::endl;
+		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << " because ";
 		throw Bureaucrat::GradeTooLowException();
 	}
 }
