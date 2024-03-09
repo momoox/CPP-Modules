@@ -6,15 +6,17 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:08:06 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/03/08 17:56:44 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:38:44 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <iostream>
-#include <fstream>
+# include <iostream>
+# include <fstream>
+# include <ctime>
+# include <cstdlib>
 # include "../AForm/AForm.hpp"
 
 class AForm;
