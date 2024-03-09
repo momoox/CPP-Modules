@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 22:04:08 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/03/09 15:49:50 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:39:56 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ void	Form::signForm(const Form& rhs){
 	if (rhs.getSigned() == true)
 		std::cout << this->getName() << "signed" << rhs.getName() << std::endl;
 	else
+	{
 		std::cout << this->getName() << "couldn't sign" << rhs.getName() << std::endl;
 		if (this->getGradeToSign() < rhs.getGradeToSign())
 			throw Form::GradeTooLowException();
 		else
 			throw Form::GradeTooHighException();
+	}
 }
 
 Form& Form::operator=(const Form& rhs){
