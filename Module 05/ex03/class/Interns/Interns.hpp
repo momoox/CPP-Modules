@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 18:13:53 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/19 14:50:56 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:18:22 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ public:
 	public:
 		virtual const char *what() const throw()
 		{
-			return ("Form NotFound\n");
+			return ("form not found\n");
 		}
 	};
 };

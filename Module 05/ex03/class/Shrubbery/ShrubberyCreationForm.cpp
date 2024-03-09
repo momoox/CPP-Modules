@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:27:09 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/19 14:38:31 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:17:40 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
-	if (executor.getGrade() <= this->getGradeToExecute() && this->getSign() == true)
+	if (executor.getGrade() <= this->getGradeToExecute() && this->getSigned() == true)
 	{
+		std::cout << "Execution succeeded." << std::endl << std::endl;
 		std::string Name = executor.getName() + "_shrubbery";
 		std::ofstream outfile(Name.c_str());
 		outfile << "               # #### #### " << std::endl;
@@ -52,7 +53,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
 	else
 	{
 		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << std::endl << std::endl;
-		throw Bureaucrat::GradeTooLowException();
+		if (this->getGradeToExecute() < executor.getGrade())
+			throw Bureaucrat::GradeTooLowException();
+		else
+			throw Bureaucrat::GradeTooHighException();
 	}
 }
 

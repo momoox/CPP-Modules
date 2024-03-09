@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:27:09 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/03/09 15:55:11 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:16:54 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
 	else
 	{
 		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << " because ";
-		throw Bureaucrat::GradeTooLowException();
+		if (this->getGradeToExecute() < executor.getGrade())
+			throw Bureaucrat::GradeTooLowException();
+		else
+			throw Bureaucrat::GradeTooHighException();
 	}
 }
 

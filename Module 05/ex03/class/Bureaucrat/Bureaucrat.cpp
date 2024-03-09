@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:08:01 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/02/19 14:52:12 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:47:02 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,16 @@ int	Bureaucrat::getGrade() const{
 }
 
 void	Bureaucrat::signForm(const Form &rhs){
-	if (rhs.getSign() == true)
+	if (rhs.getSigned() == true)
 		std::cout << this->getName() << " signed " << rhs.getName() << std::endl;
 	else
-		std::cout << this->getName() << " couldn't sign " << rhs.getName() << std::endl;
-		throw Bureaucrat::GradeTooLowException();
+	{
+		std::cout << this->getName() << " couldn't sign " << rhs.getName() << " because ";
+		if (this->getGrade() > rhs.getGradeToSign())
+			throw Bureaucrat::GradeTooLowException();
+		else
+			throw Bureaucrat::GradeTooHighException();
+	}
 }
 
 void	Bureaucrat::incgrade(){
@@ -61,7 +66,7 @@ void	Bureaucrat::decgrade(){
 }
 
 void	Bureaucrat::executeForm(Form const &form){
-	std::cout << form.getName() << " is executed by " << this->getName() << std::endl << std::endl;
+	std::cout << this->getName() << " is trying to execute " << form.getName() << std::endl;
 	form.execute(*this);
 }
 

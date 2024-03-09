@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:55:37 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/03/09 15:53:49 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:16:43 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
 	else
 	{
 		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << " because ";
-		throw Bureaucrat::GradeTooLowException();
+		if (this->getGradeToExecute() < executor.getGrade())
+			throw Bureaucrat::GradeTooLowException();
+		else
+			throw Bureaucrat::GradeTooHighException();
 	}
 }
 

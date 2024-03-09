@@ -31,7 +31,7 @@ public:
 	Form& operator = (const Form& rhs);
 
 	std::string getName(void) const;
-	bool		getSign(void) const;
+	bool		getSigned(void) const;
 	int			getGradeToSign() const;
 	int			getGradeToExecute() const;
 	void		beSigned(const Bureaucrat& rhs);
