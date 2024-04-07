@@ -5,60 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 14:44:09 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/03/07 14:44:59 by mgeisler         ###   ########.fr       */
+/*   Created: 2024/04/02 16:03:42 by mgeisler          #+#    #+#             */
+/*   Updated: 2024/04/02 16:34:04 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Array.hpp>
+#include "Array.hpp"
 
-#define MAX_VAL 750
-int main(int, char**)
+int main(void)
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+	// === Array Class === //
+	Array<int> numbers(5);
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+	numbers[0] = 1;
+	numbers[1] = 2;
+	numbers[2] = 3;
+	numbers[3] = 4;
+	numbers[4] = 5;
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+	const Array<int> numbers2(numbers);
+
+	numbers[0] = 7;
+
+	std::cout << "numbers2[0]: " << numbers2[0] << std::endl;
+	std::cout << "numbers2[0]: " << numbers[0] << std::endl;
+	std::cout << "numbers2[1]: " << numbers2[1] << std::endl;
+	std::cout << "numbers2[2]: " << numbers2[2] << std::endl;
+	std::cout << "numbers2[3]: " << numbers2[3] << std::endl;
+
+	std::cout << "size of numbers: " << numbers.size() << std::endl;
+
+	std::cout << std::endl;
+
+	Array<int> numbers3(5);
+	numbers3[0] = 6;
+	numbers3[1] = 7;
+	numbers3[2] = 8;
+	numbers3[3] = 9;
+	numbers3[4] = 10;
+	std::cout << "numbers3[0]: " << numbers3[0] << std::endl;
+	std::cout << "numbers3[1]: " << numbers3[1] << std::endl;
+	std::cout << "numbers3[2]: " << numbers3[2] << std::endl;
+	std::cout << "numbers3[3]: " << numbers3[3] << std::endl;
+	std::cout << std::endl << "numbers3 = numbers" << std::endl << std::endl;
+	numbers3 = numbers;
+	numbers[0] = 42;
+	std::cout << "numbers3[0]: " << numbers3[0] << std::endl;
+	std::cout << "numbers3[1]: " << numbers3[1] << std::endl;
+	std::cout << "numbers3[2]: " << numbers3[2] << std::endl;
+	std::cout << "numbers3[3]: " << numbers3[3] << std::endl;
+
+	std::cout << std::endl;
+	
+	// === std arr === //
+
+	const int test = 0;
+	std::cout << "test: " << test << std::endl;
+
+	// === Does not compile === //
+	// test = 5;
+	// number2[0] = 42;
+	
+	return (0);
 }
