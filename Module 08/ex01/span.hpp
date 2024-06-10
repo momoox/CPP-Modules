@@ -6,27 +6,34 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:34:08 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/04/17 12:42:42 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/05/03 19:29:29 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SPAN_HPP
-# define SPAN_HPP
+# ifndef Span_HPP
+# define Span_HPP
 
 # include <iostream>
+# include <vector>
+# include <algorithm>
+# include <cstdlib>
+# include <time.h>
 
-class span {
+class Span {
 private:
-	int			 *_store;
-	unsigned int _ssize;
+	std::vector<unsigned int> _Vec;
+	unsigned int	_Size;
 
 public:
-	span(unsigned int N);
-	~span();
-	span(const span &src);
-	span &operator = (const span &rhs);
+	Span(unsigned int N);
+	~Span();
+	Span(const Span &src);
+	Span &operator = (const Span &rhs);
 
-	void addNumber(int value);
+	void 			addNumber(int value);
+	void			rangeIterator();
+	unsigned int	shortestSpan();
+	unsigned int	longestSpan();
 };
 
 #endif

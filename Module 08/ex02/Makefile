@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/13 18:29:53 by mgeisler          #+#    #+#              #
-#    Updated: 2024/05/03 19:30:23 by mgeisler         ###   ########.fr        #
+#    Created: 2024/05/04 12:40:51 by mgeisler          #+#    #+#              #
+#    Updated: 2024/06/07 19:36:00 by mgeisler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	Span
+NAME		:=	MutantStack
 
 # ------------------------------ Sources -----------------------------
 
-SRCS		:=	main.cpp Span.cpp\
+SRCS		:=	main.cpp MutantStack.cpp\
 
 OBJ_DIR		:=	.objs
 OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
