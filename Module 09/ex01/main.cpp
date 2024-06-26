@@ -5,29 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 16:02:11 by edelarbr          #+#    #+#             */
-/*   Updated: 2024/06/14 18:46:44 by mgeisler         ###   ########.fr       */
+/*   Created: 2024/06/11 18:15:15 by mgeisler          #+#    #+#             */
+/*   Updated: 2024/06/26 17:12:22 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
+// container stack ?
+// push values and pop 2 when ope (checker si y'a bien une valeur)
+// push back in result and continue
 
-int main(int argc, char **argv)
-{
-	BitcoinExchange exchange;
 
-	if (argc != 2)
-	{
-		std::cout << "Error: wrong number of arguments" << std::endl;
-		return (1);
-	}
+//check les signes, check si que chiffres
+//valeurs inferieurs a 10 (pas les resultats)
+// gerer + - / *
 
+
+int main(int argc, char** argv) {
+	(void) argc;
+	
 	try {
-		std::cout << exchange.change(std::string(argv[1]), "data.csv") << std::endl;
+		RPN test(argv[1]);
+		test.RPNresult();
 	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+	catch (const RPN::Args &e) {
+		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	return (0);
 }
-// container map ? & vector ?
