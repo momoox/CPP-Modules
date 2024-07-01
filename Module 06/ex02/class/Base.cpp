@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:41:19 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/03/04 17:51:08 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/07/01 20:15:44 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void identify(Base* p){
 
 void identify(Base& p){
 	try{
-		A &t = dynamic_cast<A&>(p);
+		A& t = dynamic_cast<A&>(p);
 		(void)t;
 		std::cout << "Object type for reference p is A." << std::endl;
 	}
@@ -59,7 +59,7 @@ void identify(Base& p){
 		// std::cout << e.what() << std::endl;
 	}
 	try{
-		B &t = dynamic_cast<B&>(p);
+		B& t = dynamic_cast<B&>(p);
 		(void)t;
 		std::cout << "Object type for reference p is B." << std::endl;
 	}
@@ -67,7 +67,7 @@ void identify(Base& p){
 		// std::cout << e.what() << std::endl;
 	}
 	try{
-		C &t = dynamic_cast<C&>(p);
+		C& t = dynamic_cast<C&>(p);
 		(void)t;
 		std::cout << "Object type for reference p is C." << std::endl;
 	}
