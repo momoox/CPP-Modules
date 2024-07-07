@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:52:04 by edelarbr          #+#    #+#             */
-/*   Updated: 2024/06/30 23:18:00 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/07/07 19:05:51 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+# include <cstdio>
 # include <fstream>
 # include <string>
 # include <sstream>
@@ -21,12 +22,12 @@
 
 class BitcoinExchange {
 private:
-	float		_value;
-	std::string	_date;
 	std::vector<std::string> _inputVec;
+	std::vector<std::string> _dataBaseVec;
 	
 	std::ifstream	_FirstCheck(std::string input);
-	void			_InputFileIsValid(std::string input, std::string current);
+	int				_InputFileIsValid(std::string current);
+	void			_Operation(std::string input);
 
 public:
 	BitcoinExchange();
@@ -34,8 +35,9 @@ public:
 	virtual ~BitcoinExchange();
 	BitcoinExchange &operator = (const BitcoinExchange &rhs);
 
-	std::string	change(std::string input, std::string db);
+	void		change(std::string input, std::string db);
+	float		stringToFloat(std::string value);
 
 };
 
-#endif // BITCOINEXCHANGE_HPP
+#endif

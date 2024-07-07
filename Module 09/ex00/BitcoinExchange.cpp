@@ -6,14 +6,13 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:51:59 by edelarbr          #+#    #+#             */
-/*   Updated: 2024/07/01 15:47:32 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/07/07 19:07:54 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() {
-	this->_value = 0;
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src) {
@@ -25,18 +24,19 @@ BitcoinExchange::~BitcoinExchange() {}
 BitcoinExchange &BitcoinExchange::operator = (const BitcoinExchange &rhs)
 {
 	if (this != &rhs) {
-		// - Copy all attributes here
+		this->_inputVec = rhs._inputVec;
+		this->_dataBaseVec = rhs._dataBaseVec;
 	}
 	return (*this);
 }
 
 std::ifstream	BitcoinExchange::_FirstCheck(std::string input) {
-	if (input.length() < 5 || (input.substr(input.length() - 4, 4) != ".txt" && input.substr(input.length() - 4, 4) != ".cvs"))
-		throw std::invalid_argument((std::string("Error: wrong input name, use input.txt or input.cvs")));
+	if (input.substr(input.length() - 4, 4) != ".txt" && input.substr(input.length() - 4, 4) != ".csv")
+		throw std::invalid_argument((std::string("Error: wrong input name, use input.txt or input.csv")));
 	
 	std::ifstream inputFile(input);
 	if (!inputFile)
-		throw std::invalid_argument(std::string("Error: input file can't be opened")); // - creation de l'objet ifstream
+		throw std::invalid_argument(std::string("Error: input file can't be opened"));
 
 	std::string line;
 	if(std::getline(inputFile, line))
@@ -45,16 +45,18 @@ std::ifstream	BitcoinExchange::_FirstCheck(std::string input) {
 	return(inputFile);
 }
 
-void	BitcoinExchange::_InputFileIsValid(std::string input, std::string current) {
+int		BitcoinExchange::_InputFileIsValid(std::string current) {
 	
+		int	checker = 0;
 		int year = std::atoi(current.substr(0, 4).c_str());
-		int day = std::atoi(current.substr(5, 2).c_str());
-		int month = std::atoi(current.substr(8, 2).c_str());
+		int month = std::atoi(current.substr(5, 2).c_str());
+		int day = std::atoi(current.substr(8, 2).c_str());
 		std::string divider = current.substr(10, 3);
 		if(year < 2009 || year > 2022 || day < 1 || day > 31 || month < 1 || month > 12 || divider != " | ")
 		{
-			std::cout << current;
-			std::cout << " -> wrong input." << std::endl;
+			checker = 1;
+			std::cout << "Error: " << current.substr(0, 10) << " => wrong input." << std::endl;
+			return(checker);
 		}
 		
 		std::istringstream extract(current.substr(12));
@@ -62,38 +64,101 @@ void	BitcoinExchange::_InputFileIsValid(std::string input, std::string current) 
 		extract >> value;
 		if(extract.fail() || !extract.eof() || value < 0)
 		{
-			std::cout << current;
-			std::cout << " -> not a positive number." << std::endl;
+			checker = 1;
+			std::cout << "Error: " << current.substr(0, 9) << " => not a positive number." << std::endl;
 		}
 		else if(extract.fail() || !extract.eof() || value > 1000)
 		{
-			std::cout << current;
-			std::cout << " -> number too large." << std::endl;
+			checker = 1;
+			std::cout << "Error: " << current << " => number too large." << std::endl;
 		}
-	//dans un iterateur
-	//si les 4 premiers cara sont compris entre 2009 et 2022
-	//si les 2 cara, place 5/6 sont compris entre 01 et 31 (debut de string 0)
-	//si les 2 cara, place 8/9 sont compris entre 01 et 12
-	// si 3 cara 10,11,12 sont space | space
-	//si la valeur a partir de 12 est un int ou un float et entre 0 et 1000
-	// string stream
+		return(checker);
 }
 
-std::string	BitcoinExchange::change(std::string input, std::string db)
+float	BitcoinExchange::stringToFloat(std::string value) {
+	float result = 0;
+	float sign = 1;
+	float decimal = 0;
+	float decimalSign = 1;
+	bool isDecimal = false;
+
+	size_t i = 0;
+	while (i < value.length() && std::isspace(value[i])) {
+		i++;
+	}
+	if (i < value.length() && (value[i] == '+' || value[i] == '-')) {
+		if (value[i++] == '-')
+			sign = -1;
+		else
+			sign = 1;
+	}
+	while (i < value.length() && (std::isdigit(value[i]) || value[i] == '.')) {
+		if (value[i] == '.') {
+			isDecimal = true;
+			i++;
+			continue;
+		}
+		if (isDecimal) {
+			decimal = decimal * 10 + (value[i++] - '0');
+			decimalSign *= 10;
+		} else {
+			result = result * 10 + (value[i++] - '0');
+		}
+	}
+	return sign * (result + (decimal / decimalSign));
+}
+
+void	BitcoinExchange::_Operation(std::string input) {
+	float		 inputValue = 0.0;
+	float 		dataBaseValue = 0.0;
+	std::string prevLine;
+	
+	std::vector<std::string>::iterator ite;
+	for(ite = this->_dataBaseVec.begin(); ite != this->_dataBaseVec.end(); ++ite) {
+		std::string &dataBaseLine = *ite;
+		if (prevLine.empty())
+			prevLine = *ite;
+		if(input.substr(0, 10) == dataBaseLine.substr(0, 10)) {
+			inputValue = stringToFloat(input.substr(12));
+			dataBaseValue = stringToFloat(dataBaseLine.substr(11));
+			// std::cout << "Input line = " << input.substr(0, 10) << std::endl;
+			// std::cout << "Database line = " << dataBaseLine.substr(11) << std::endl;
+			// std::cout << "Input value = " << inputValue << std::endl;
+			// std::cout << "Database value = " << dataBaseValue << std::endl;
+			break;
+		}
+		else if(prevLine < input.substr(0, 10) && dataBaseLine > input.substr(0, 10)) {
+			inputValue = stringToFloat(input.substr(12));
+			dataBaseValue = stringToFloat(prevLine.substr(11));
+			// std::cout << "Input line = " << input.substr(0, 10) << std::endl;
+			// std::cout << "Database line = " << prevLine.substr(11) << std::endl;
+			// std::cout << "Input value = " << inputValue << std::endl;
+			// std::cout << "Database value = " << dataBaseValue << std::endl;
+			break;
+		}
+		prevLine = *ite;
+	}
+	float results = inputValue * dataBaseValue;
+	std::cout << input.substr(0, 10) << " => " << input.substr(13) << " = " << results << std::endl;
+}
+
+void	BitcoinExchange::change(std::string input, std::string db)
 {
-	(void) db;
 	std::ifstream inputFile(_FirstCheck(input));
+	std::ifstream dataBaseFile(db);
 
 	std::string line;
     while (std::getline(inputFile, line))
         this->_inputVec.push_back(line);
+	
+	while(std::getline(dataBaseFile, line))
+		this->_dataBaseVec.push_back(line);
 
+	
 	std::vector<std::string>::iterator it;
 	for (it = this->_inputVec.begin(); it != this->_inputVec.end(); ++it) {
 		std::string &current = *it;
-		_InputFileIsValid(input, current);
-		//calcul et tout ca
+		if(!_InputFileIsValid(current))
+			_Operation(current);
 	}
-
-	return ("");
 }
