@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:31 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/07/12 19:28:54 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/07/19 10:54:45 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,58 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& rhs) {
 		this->_deque = rhs._deque;
 		this->_map = rhs._map;
 	return(*this);
+}
+
+void	PmergeMe::_printBeforeDeque() {
+	int	count = 0;
+
+	std::cout << "Before: ";
+	std::deque<int>::iterator it;
+	for(it = _deque.begin(); it != _deque.end() && count <= 4; ++it, count++) {
+		std::cout << *it << " ";
+	}
+
+	if(count >= 4)
+		std::cout << "[...]" << std::endl;
+}
+
+void	PmergeMe::_printAfterDeque() {
+	int	count = 0;
+
+	std::cout << "After: ";
+	std::deque<int>::iterator it;
+	for(it = _deque.begin(); it != _deque.end() && count <= 4; ++it, ++count) {
+		std::cout << *it << " ";
+	}
+
+	if(count >= 4)
+		std::cout << "[...]" << std::endl;
+}
+
+void	PmergeMe::_printBeforeMap() {
+	int	count = 0;
+
+	std::cout << "Before: ";
+	std::map<int, std::string>::iterator it;
+	for(it = _map.begin(); it != _map.end() && count <= 4; ++it, ++count) {
+		std::cout << it->first << " ";
+	}
+	if(count >= 4)
+		std::cout << "[...]";
+	std::cout << std::endl;
+}
+
+void	PmergeMe::_printAfterMap() {
+	int	count = 0;
+
+	std::cout << "After: ";
+	std::map<int, std::string>::iterator it;
+	for(it = _map.begin(); it != _map.end() && count <= 4; ++it, ++count) {
+		std::cout << it->first << " ";
+	}
+	if(count >= 4)
+		std::cout << "[...]";
+	std::cout << std::endl;
 }
 
 int	PmergeMe::_stringToInt(std::string& input) {
@@ -48,17 +100,9 @@ int	PmergeMe::_stringToInt(std::string& input) {
     return sign * result;
 }
 
-// int	PmergeMe::_isInt(std::string& input) {
-// 	for(size_t i = 0; i < input.size(); ++i) {
-// 		if(!std::isdigit(input[i]))
-// 			return(1);
-// 	}
-// 	return(0);
-// }
-
 void	PmergeMe::_parsing(std::string input) {
 	size_t len = input.size();
-	if(len < 2)
+	if(len < 1)
 		throw std::invalid_argument("Error: Not enough values entered.\n");
 
 	for(size_t i = 0; i < input.size(); ++i) {
@@ -73,28 +117,44 @@ void	PmergeMe::_mergeDeque(std::deque<int>& left, std::deque<int>& right, std::d
 	size_t i = 0;
 	size_t j = 0;
 	size_t k = 0;
+	int		lastInsert = -1;
 
 	while(i < left.size() && j < right.size()) {
 		if(left[i] < right[j]) {
-			_deque[k] = left[i];
+			if(lastInsert != left[i]){
+				_deque[k] = left[i];
+				lastInsert = left[i];
+				k++;
+			}
 			i++;
 		}
 		else {
-			_deque[k] = right[j];
+			if(lastInsert != right[j]){
+				_deque[k] = right[j];
+				lastInsert = right[j];
+				k++;
+			}
 			j++;
 		}
-		k++;
 	}
+
 	while(i < left.size()) {
-		_deque[k] = left[i];
-		i++;
-		k++;
-	}
+   	 if(lastInsert != left[i]) {
+   	     _deque[k] = left[i];
+   	     lastInsert = left[i];
+   	     k++;
+   	 }
+   	 i++;
+}	
 	while(j < right.size()) {
-		_deque[k] = right[j];
-		j++;
-		k++;
+    	if(lastInsert != right[j]) {
+    	    _deque[k] = right[j];
+    	    lastInsert = right[j];
+    	    k++;
+    	}
+    	j++;
 	}
+	_deque.resize(k);
 }
 
 void	PmergeMe::_DequeSort(std::deque<int>& _deque) {
@@ -112,8 +172,9 @@ void	PmergeMe::_DequeSort(std::deque<int>& _deque) {
 
 	size_t j = 0;
 	for(size_t i = 0; i < len; ++i) {
-		if(i < mid)
+		if(i < mid) {
 			left[i] = _deque[i];
+		}
 		else {
 			right[j] = _deque[i];
 			j++;
@@ -124,26 +185,25 @@ void	PmergeMe::_DequeSort(std::deque<int>& _deque) {
 	PmergeMe::_mergeDeque(left, right, _deque);
 }
 
-std::string	PmergeMe::DequeStart(std::string input) {
+void	PmergeMe::DequeCreation(std::string input) {
 	PmergeMe::_parsing(input);
-
-	std::cout << input << std::endl;
 	
 	std::istringstream iss(input);
 	std::string token;
 	while (std::getline(iss, token, ' ')) {
+		if(token.empty()) {
+			break;
+		}
 		_deque.push_back(PmergeMe::_stringToInt(token));
 	}
+}
 
-	PmergeMe::_DequeSort(_deque);
+void	PmergeMe::DequeStart() {
+	_printBeforeDeque();
+	_DequeSort(_deque);
+	_printAfterDeque();
 
-	std::deque<int>::iterator it;
-	for(it = _deque.begin(); it != _deque.end(); ++it) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-	
-	return("");
+	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : ";
 }
 
 void	PmergeMe::_mergeMap(std::map<int, std::string>& left, std::map<int, std::string>& right, std::map<int, std::string>& _map) {
@@ -198,22 +258,24 @@ void	PmergeMe::_MapSort(std::map<int, std::string>& _map) {
 	PmergeMe::_mergeMap(left, right, _map);
 }
 
-std::string	PmergeMe::MapStart(std::string input) {
+void	PmergeMe::MapCreation(std::string input) {
 	PmergeMe::_parsing(input);
-
-	std::cout << input << std::endl;
-
+	
 	std::istringstream iss(input);
 	std::string token;
 	while (std::getline(iss, token, ' ')) {
+		if(token.empty()) {
+			break;
+		}
 		_map.insert(std::pair<int, std::string>(PmergeMe::_stringToInt(token), token));
 	}
+}
 
+void	PmergeMe::MapStart() {
+
+	// _printBeforeMap();
 	PmergeMe::_MapSort(_map);
-	std::map<int, std::string>::iterator it;
-	for(it = _map.begin(); it != _map.end(); ++it) {
-		std::cout << it->first << " ";
-	}
-	std::cout << std::endl;
-	return("");
+	// _printAfterMap();
+	
+	std::cout << "Time to process a range of " << _map.size() << " elements with std::map : ";
 }

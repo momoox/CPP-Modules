@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:35 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/07/12 19:23:40 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/07/19 10:52:19 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <climits>
 # include <sstream>
 # include <cctype>
+# include <chrono>
+# include <iomanip>
 # include <map>
 # include <deque>
 
@@ -24,9 +26,15 @@ class PmergeMe {
 private:
 	std::deque<int>				_deque;
 	std::map<int, std::string>	_map;
+
 	void						_parsing(std::string input);
 	int							_stringToInt(std::string& input);
 	int							_isInt(std::string& input);
+
+	void						_printBeforeDeque();
+	void						_printAfterDeque();
+	void						_printBeforeMap();
+	void						_printAfterMap();
 
 	void						_DequeSort(std::deque<int>& _deque);
 	void						_mergeDeque(std::deque<int>& left, std::deque<int>& right, std::deque<int>& result);
@@ -40,8 +48,11 @@ public:
 	PmergeMe(const PmergeMe& src);
 	PmergeMe& operator = (const PmergeMe& rhs);
 
-	std::string	DequeStart(std::string input);
-	std::string	MapStart(std::string input);
+	void		DequeCreation(std::string input);
+	void		MapCreation(std::string input);
+
+	void		DequeStart();
+	void		MapStart();
 };
 
 #endif
