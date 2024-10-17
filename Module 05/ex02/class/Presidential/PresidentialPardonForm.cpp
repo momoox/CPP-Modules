@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 21:01:17 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/03/09 16:16:36 by mgeisler         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:14:43 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const{
 	}
 	else
 	{
-		std::cout << this->getName() << " couldn't be executed by " << executor.getName() << " because ";
+		std::cout << this->_targetName << " couldn't be executed by " << executor.getName() << " because ";
 		if (this->getGradeToExecute() < executor.getGrade())
 			throw Bureaucrat::GradeTooLowException();
 		else
