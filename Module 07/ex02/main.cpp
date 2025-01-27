@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:03:42 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/10/22 20:19:18 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:01:08 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,14 @@ int main(void)
 	std::cout << "numbers3[4]: " << numbers3[4] << std::endl;
 
 	std::cout << "size of numbers: " << numbers.size() << std::endl;
+
+	try {
+		std::cout << numbers3[5] << std::endl;
+	}
+
+	catch(const std::exception &e) {
+		std::cout << "Error." << std::endl;
+	}
 	
 	// === std arr === //
 
