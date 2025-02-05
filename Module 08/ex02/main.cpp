@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:40:11 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/06/10 16:42:38 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:03:41 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int main()
 	mstack.push(5);
 	mstack.push(17);
 
-	std::cout << mstack.top() << std::endl;
+	std::cout << "Top of mutant stack: " << mstack.top() << std::endl;
 
 	mstack.pop();
 
-	std::cout << mstack.size() << std::endl;
+	std::cout << "Top of mutant stack after pop: " << mstack.top() << std::endl;
 
 	mstack.push(3);
 	mstack.push(5);
@@ -41,10 +41,13 @@ int main()
 		std::cout << *it << std::endl;
 		++it;
 	}
+	
+	std::cout << "Size of mutant stack: " << mstack.size() << std::endl;
 
-	printf("---TEST VECTOR---\n");
+	std::cout << "---TEST LIST---\n" << std::endl;
 
-	std::vector<int> s;
+
+	std::list<int> s;
 
 	s.push_back(5);
 	s.push_back(3);
@@ -52,8 +55,8 @@ int main()
 	s.push_back(737);
 	s.push_back(0);
 
-	std::vector<int>::iterator te = s.begin();
-	std::vector<int>::iterator st = s.end();
+	std::list<int>::iterator te = s.begin();
+	std::list<int>::iterator st = s.end();
 
 	++te;
 	--te;
@@ -63,6 +66,8 @@ int main()
 		std::cout << *te << std::endl;
 		++te;
 	}
+
+	std::cout << "Size of list: " << s.size() << std::endl;
 	
 	return 0;
 }
