@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:03:42 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/01/22 14:01:08 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:22:51 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int main(void)
 	numbers[0] = 7;
 	std::cout << "numbers[0] changed to 7. numbers2 is a copy of numbers before recent changes." << std::endl << std::endl;
 
+	std::cout << "--> numbers[0]: " << numbers[0] << std::endl;
 	std::cout << "numbers2[0]: " << numbers2[0] << std::endl;
-	std::cout << "numbers[0]: " << numbers[0] << std::endl;
 	std::cout << "numbers2[1]: " << numbers2[1] << std::endl;
 	std::cout << "numbers2[2]: " << numbers2[2] << std::endl;
 	std::cout << "numbers2[3]: " << numbers2[3] << std::endl;
 	std::cout << "numbers2[4]: " << numbers2[4] << std::endl;
 
-	std::cout << "size of numbers: " << numbers.size() << std::endl;
+	std::cout << "size of numbers2: " << numbers.size() << std::endl;
 
 	std::cout << std::endl;
 
@@ -66,14 +66,13 @@ int main(void)
 	std::cout << "numbers3[1]: " << numbers3[1] << std::endl;
 	std::cout << "numbers3[2]: " << numbers3[2] << std::endl;
 	std::cout << "numbers3[3]: " << numbers3[3] << std::endl;
+	std::cout << "numbers3[4]: " << numbers3[4] << std::endl;
 
-	std::cout << "size of numbers: " << numbers.size() << std::endl << std::endl;
+	std::cout << "size of numbers3: " << numbers.size() << std::endl << std::endl;
 
 	std::cout << std::endl << "numbers3 changed to be a copy of numbers." << std::endl << std::endl;
 
 	numbers3 = numbers;
-
-	numbers[0] = 42;
 
 	std::cout << "numbers3[0]: " << numbers3[0] << std::endl;
 	std::cout << "numbers3[1]: " << numbers3[1] << std::endl;
@@ -81,8 +80,11 @@ int main(void)
 	std::cout << "numbers3[3]: " << numbers3[3] << std::endl;
 	std::cout << "numbers3[4]: " << numbers3[4] << std::endl;
 
-	std::cout << "size of numbers: " << numbers.size() << std::endl;
+	std::cout << "size of numbers3: " << numbers.size() << std::endl;
 
+
+	std::cout << std::endl;
+	std::cout << "Try/catch out of memory numbers3:" << std::endl;
 	try {
 		std::cout << numbers3[5] << std::endl;
 	}
@@ -91,14 +93,6 @@ int main(void)
 		std::cout << "Error." << std::endl;
 	}
 	
-	// === std arr === //
-
-	// const int test = 0;
-	// std::cout << "test: " << test << std::endl;
-
-	// === Does not compile === //
-	// test = 5;
-	// number2[0] = 42;
 	
 	return (0);
 }
