@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:35:51 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/10/16 16:38:21 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:01:09 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int	main(){
 	std::cout << "After swap, a = " << a << " and b = " << b << std::endl;
 	
 	std::cout << std::endl;
+
+	std::cout << "Double c and d created. c = " << c << " and d = " << d << std::endl;
 	
-	std::cout << "Minimum between a and b is " << min<int>(a, b) << std::endl;
-	std::cout << "Maximum between a and b is " << max(c, d) << std::endl;
+	std::cout << "Minimum between c and d is " << min<double>(c, d) << std::endl;
+	std::cout << "Maximum between c and d is " << max(c, d) << std::endl;
 }
 
 
