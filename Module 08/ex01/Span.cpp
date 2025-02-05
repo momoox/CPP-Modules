@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:38:27 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/02/05 15:04:13 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:47:11 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,20 @@ Span& Span::operator=(const Span &rhs){
 }
 
 void Span::addNumber(int value){
-	if(this->_Vec.size() < this->_Size)
+	if(this->_Vec.size() < this->_Size) {
 		this->_Vec.push_back(value);
+		// std::cout << value << std::endl;
+	}
 	else
 		throw std::exception();
 }
 
-// void	Span::rangeIterator(){
-// 	std::srand(time(0));
+void	Span::rangeIterator(){
+	std::srand(time(0));
 
-// 	for(std::vector<unsigned int>::iterator it = this->_Vec.begin(); it != this->_Vec.end() || this->_Vec.begin() == this->_Vec.end(); ++it)
-// 		addNumber(std::rand() % 10);
-// }
+	for(std::vector<unsigned int>::iterator it = this->_Vec.begin(); it != this->_Vec.end() || this->_Vec.begin() == this->_Vec.end(); ++it)
+		addNumber(std::rand() % 10);
+}
 
 unsigned int Span::shortestSpan(){
 	if(this->_Size <= 1 || this->_Vec.size() <= 1)

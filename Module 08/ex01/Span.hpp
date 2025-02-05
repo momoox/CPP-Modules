@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:34:08 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/02/05 15:03:58 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:06:31 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ public:
 	Span &operator = (const Span &rhs);
 
 	void 			addNumber(int value);
-	// void			rangeIterator();
+	void			rangeIterator();
 	unsigned int	shortestSpan();
 	unsigned int	longestSpan();
 };
