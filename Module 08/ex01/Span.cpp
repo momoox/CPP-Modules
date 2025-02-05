@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.cpp                                           :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:38:27 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/05/03 20:48:48 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:04:13 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void Span::addNumber(int value){
 		throw std::exception();
 }
 
-void	Span::rangeIterator(){
-	std::srand(time(0));
+// void	Span::rangeIterator(){
+// 	std::srand(time(0));
 
-	for(std::vector<unsigned int>::iterator it = this->_Vec.begin(); it != this->_Vec.end() || this->_Vec.begin() == this->_Vec.end(); ++it)
-		addNumber(std::rand() % 10);
-}
+// 	for(std::vector<unsigned int>::iterator it = this->_Vec.begin(); it != this->_Vec.end() || this->_Vec.begin() == this->_Vec.end(); ++it)
+// 		addNumber(std::rand() % 10);
+// }
 
 unsigned int Span::shortestSpan(){
 	if(this->_Size <= 1 || this->_Vec.size() <= 1)

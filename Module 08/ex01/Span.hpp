@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.hpp                                           :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:34:08 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/05/03 19:29:29 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:03:58 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <vector>
 # include <algorithm>
 # include <cstdlib>
+# include <climits>
 # include <time.h>
 
 class Span {
@@ -31,7 +32,7 @@ public:
 	Span &operator = (const Span &rhs);
 
 	void 			addNumber(int value);
-	void			rangeIterator();
+	// void			rangeIterator();
 	unsigned int	shortestSpan();
 	unsigned int	longestSpan();
 };
