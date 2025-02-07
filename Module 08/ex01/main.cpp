@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:33:57 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/05/03 20:45:15 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:11:57 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(){
 
-	Span sp = Span(10000);
+	Span sp = Span(5);
 
 	// try{
 	// 	sp.addNumber(6);
@@ -22,16 +22,15 @@ int	main(){
 	// 	sp.addNumber(17);
 	// 	sp.addNumber(9);
 	// 	sp.addNumber(11);
-	// }
-	// catch (std::exception &e){
-	// 	std::cout << "Error occured: too manny numbers added." << std::endl;	
+	// 	// sp.addNumber(20);
 	// }
 
 	try{
 		sp.rangeIterator();
 	}
+	
 	catch (std::exception &e){
-		std::cout << "Error occured: too manny numbers added." << std::endl;
+		std::cout << "Error occured: too manny numbers added." << std::endl;	
 	}
 	
 	try{

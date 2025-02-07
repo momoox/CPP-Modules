@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:03:42 by mgeisler          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/27 12:45:11 by mgeisler         ###   ########.fr       */
+=======
+/*   Updated: 2025/02/05 14:22:51 by mgeisler         ###   ########.fr       */
+>>>>>>> 867a6d03ac7c8cf52174266a28d799d62410ba19
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +49,18 @@ int main(void)
 
 	std::cout << "numbers[0]: " << numbers[0] << std::endl << std::endl;
 
+	std::cout << "--> numbers[0]: " << numbers[0] << std::endl;
 	std::cout << "numbers2[0]: " << numbers2[0] << std::endl;
 	std::cout << "numbers2[1]: " << numbers2[1] << std::endl;
 	std::cout << "numbers2[2]: " << numbers2[2] << std::endl;
 	std::cout << "numbers2[3]: " << numbers2[3] << std::endl;
 	std::cout << "numbers2[4]: " << numbers2[4] << std::endl;
 
+<<<<<<< HEAD
 	std::cout << "size of numbers in numbers2: " << numbers.size() << std::endl << std::endl;
+=======
+	std::cout << "size of numbers2: " << numbers.size() << std::endl;
+>>>>>>> 867a6d03ac7c8cf52174266a28d799d62410ba19
 
 	std::cout << "--- THIRD TEST ---" << std::endl << std::endl;
 	std::cout << "numbers3 creation..." << std::endl;
@@ -82,11 +91,19 @@ int main(void)
 	std::cout << "numbers3[3]: " << numbers3[3] << std::endl;
 	std::cout << "numbers3[4]: " << numbers3[4] << std::endl;
 
+<<<<<<< HEAD
 	std::cout << "size of numbers3: " << numbers.size() << std::endl << std::endl;
 
 	std::cout << "--- FORTH TEST ---" << std::endl << std::endl;
 	std::cout << "Trying outside of numbers3 len: " << std::endl;
 	
+=======
+	std::cout << "size of numbers3: " << numbers.size() << std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "Try/catch out of memory numbers3:" << std::endl;
+>>>>>>> 867a6d03ac7c8cf52174266a28d799d62410ba19
 	try {
 		std::cout << numbers3[5] << std::endl;
 	}
@@ -95,5 +112,9 @@ int main(void)
 		std::cout << "Error." << std::endl;
 	}
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 867a6d03ac7c8cf52174266a28d799d62410ba19
 	return (0);
 }

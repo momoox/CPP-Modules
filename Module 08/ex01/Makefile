@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+         #
+#    By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/13 18:29:53 by mgeisler          #+#    #+#              #
-#    Updated: 2024/05/03 19:30:23 by mgeisler         ###   ########.fr        #
+#    Updated: 2025/02/05 14:57:23 by mgeisler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

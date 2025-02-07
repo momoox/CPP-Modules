@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.cpp                                           :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:38:27 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/05/03 20:48:48 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:47:11 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ Span& Span::operator=(const Span &rhs){
 }
 
 void Span::addNumber(int value){
-	if(this->_Vec.size() < this->_Size)
+	if(this->_Vec.size() < this->_Size) {
 		this->_Vec.push_back(value);
+		// std::cout << value << std::endl;
+	}
 	else
 		throw std::exception();
 }
