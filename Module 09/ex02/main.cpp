@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:50:07 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/07/19 10:52:11 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:10:26 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	main(int argc, char** argv) {
 	std::chrono::time_point<std::chrono::system_clock> startDeque, endDeque;
 	std::chrono::time_point<std::chrono::system_clock> startMap, endMap;
 
-	if(argc == 1)
-		throw std::invalid_argument("Error: wrong argument. Enter a serie of value.\n");
+	if(argc == 1) {
+		std::cout << "Wrong number of arguments. Please type some values." << std::endl;
+		exit(1);
+	}
 	
 	startDeque = std::chrono::system_clock::now();
 	try {
