@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:40:11 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/02/05 16:03:41 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:07:22 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int main()
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 
-	++it;
-	--it;
+	// ++it;
+	// --it;
 
 	while (it != ite)
 	{
@@ -42,7 +42,7 @@ int main()
 		++it;
 	}
 	
-	std::cout << "Size of mutant stack: " << mstack.size() << std::endl;
+	std::cout << "Size of mutant stack: " << mstack.size() << std::endl << std::endl;
 
 	std::cout << "---TEST LIST---\n" << std::endl;
 
@@ -58,8 +58,8 @@ int main()
 	std::list<int>::iterator te = s.begin();
 	std::list<int>::iterator st = s.end();
 
-	++te;
-	--te;
+	// ++te;
+	// --te;
 
 	while (te != st)
 	{

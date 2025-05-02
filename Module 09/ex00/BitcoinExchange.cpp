@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:51:59 by edelarbr          #+#    #+#             */
-/*   Updated: 2024/07/07 19:07:54 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:14:28 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,18 @@ void	BitcoinExchange::_Operation(std::string input) {
 			// std::cout << "Input value = " << inputValue << std::endl;
 			// std::cout << "Database value = " << dataBaseValue << std::endl;
 			break;
+		}
+		if (ite + 1 == this->_dataBaseVec.end()) {
+			inputValue = stringToFloat(input.substr(12));
+			dataBaseValue = stringToFloat(prevLine.substr(11));
+			
+			float results = inputValue * dataBaseValue;
+			std::cout << dataBaseLine.substr(0, 10) << " => " << input.substr(13) << " = " << results << std::endl;
+			return;
+			// std::cout << "Input line = " << input.substr(0, 10) << std::endl;
+			// std::cout << "Database line = " << prevLine.substr(11) << std::endl;
+			// std::cout << "Input value = " << inputValue << std::endl;
+			// std::cout << "Database value = " << dataBaseValue << std::endl;
 		}
 		prevLine = *ite;
 	}

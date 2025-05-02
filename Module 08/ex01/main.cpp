@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgeisler <mgeisler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:33:57 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/02/05 15:11:57 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:50:14 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(){
 	// 	sp.addNumber(17);
 	// 	sp.addNumber(9);
 	// 	sp.addNumber(11);
-	// 	// sp.addNumber(20);
 	// }
 
 	try{

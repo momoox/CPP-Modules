@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 18:31:42 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/04/13 19:56:19 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:20:25 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int main()
 
 	try {
 		std::cout << "Vector returns: " << *(easyfind(vec, 5)) << std::endl;
-		std::cout << "Set returns: " << *(easyfind(set, 5)) << std::endl;
-		std::cout << "List returns: " << *(easyfind(list, 5)) << std::endl;
+		std::cout << "Set returns: " << *(easyfind(set, 3)) << std::endl;
+		std::cout << "List returns: " << *(easyfind(list, 9)) << std::endl;
 	}
 
 	catch (std::exception &e) {
