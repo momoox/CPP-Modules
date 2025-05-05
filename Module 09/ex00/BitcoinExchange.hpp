@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:52:04 by edelarbr          #+#    #+#             */
-/*   Updated: 2024/07/07 19:05:51 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/05 20:55:41 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+# include <cstdlib>
 # include <cstdio>
 # include <fstream>
 # include <string>
 # include <sstream>
-# include <map>
+# include <vector>
 
 class BitcoinExchange {
 private:
 	std::vector<std::string> _inputVec;
 	std::vector<std::string> _dataBaseVec;
 	
-	std::ifstream	_FirstCheck(std::string input);
+	void			_FirstCheck(std::string input, std::ifstream &inputFile);
 	int				_InputFileIsValid(std::string current);
 	void			_Operation(std::string input);
 

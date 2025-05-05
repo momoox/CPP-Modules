@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/22 16:59:43 by edelarbr          #+#    #+#              #
-#    Updated: 2024/07/18 16:40:18 by mgeisler         ###   ########.fr        #
+#    Created: 2023/07/22 16:59:43 by mgeisler          #+#    #+#              #
+#    Updated: 2025/05/05 21:10:58 by mgeisler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_DIR		:=	.objs
 OBJS		:=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 # ------------------------------ Flags -------------------------------
-
+CXX			:=	c++
 CXXFLAGS	:=	-Wall -Wextra -Werror -std=c++98 -g3
 RM			:=	rm -rf
 SHELL		:= /bin/bash

@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 00:14:14 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/06/26 18:12:57 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/05 21:35:07 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,24 @@
 RPN::RPN() {
 }
 
-RPN::RPN(char* input) {
-	int len = std::strlen(input);
+RPN::RPN(std::string input) {
+	int len = input.length();
 	size_t op = 0;
 
 	for(int i = len - 1; i >= 0; --i) {
-		if (std::isdigit(input[i]) && std::isdigit(input[i]) < 10)
+		if (std::isdigit(input[i] - '0')) {
+			std::cout << "test: " << input[i] << std::endl;
 			this->_stack.push((input[i] - '0'));
+		}
 		else if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/') {
 			op++;
 			this->_stack.push(input[i]);
 		}
 		else if(input[i] == ' ')
 			continue;
-		else
+		else {
 			throw RPN::Args();
+		}
 	}
 
 	if(this->_stack.size() < 3 || op == 0)

@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 12:23:15 by mgeisler          #+#    #+#             */
-/*   Updated: 2024/06/26 18:01:59 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/05 21:21:59 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ private:
 	
 public:
 	RPN();
-	RPN(char* input);
+	RPN(std::string input);
 	~RPN();
 	RPN(const RPN& src);
 	RPN& operator = (const RPN& rhs);
@@ -32,6 +32,7 @@ public:
 	void ValidInput();
 	void RPNresult();
 
+	//FAIRE UN .CPP JUSTE POUR LUI
 	class Args : public std::exception {
 	public:
 		const char* what() const throw() {
