@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:50:07 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/02/07 16:10:26 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/06 22:34:26 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ int	main(int argc, char** argv) {
 
 	int	i = 1;
 	PmergeMe merge;
-	std::chrono::time_point<std::chrono::system_clock> startDeque, endDeque;
-	std::chrono::time_point<std::chrono::system_clock> startMap, endMap;
+	clock_t startDeque, endDeque;
+	clock_t startMap, endMap;
+	//je crois que je vais utiliser list plutot
 
 	if(argc == 1) {
 		std::cout << "Wrong number of arguments. Please type some values." << std::endl;
 		exit(1);
 	}
 	
-	startDeque = std::chrono::system_clock::now();
+	startDeque = clock();
 	try {
 		while(i < argc)
 			merge.DequeCreation(argv[i++]);
@@ -34,12 +35,12 @@ int	main(int argc, char** argv) {
 		std::cout << e.what();
 		return(1);
 	}
-	endDeque = std::chrono::system_clock::now();
-	std::chrono::duration<double> elapsed_seconds = endDeque - startDeque;
-	std::cout << std::fixed << std::setprecision(5) << elapsed_seconds.count() << "s" << std::endl;
+	endDeque = clock();
+	double elapsed_seconds_deque = static_cast<double>(endDeque - startDeque) / CLOCKS_PER_SEC;
+	std::cout << std::fixed << std::setprecision(5) << elapsed_seconds_deque << "s" << std::endl;
 
 	i = 1;
-	startMap = std::chrono::system_clock::now();
+	startMap = clock();
 	try {
 		while(i < argc)
 			merge.MapCreation(static_cast<std::string>(argv[i++]));
@@ -50,10 +51,9 @@ int	main(int argc, char** argv) {
 		return(1);
 	}
 
-	endMap = std::chrono::system_clock::now();
-	std::chrono::duration<double> elapsed_secondsMap = endMap - startMap;
-	std::cout << std::fixed << std::setprecision(5) << elapsed_secondsMap.count() << "s" << std::endl;
+	endMap = clock();
+	double elapsed_seconds_map = static_cast<double>(endMap - startMap) / CLOCKS_PER_SEC;
+	std::cout << std::fixed << std::setprecision(5) << elapsed_seconds_map << "s" << std::endl;
 
+	return (0);
 }
-
-// `shuf -i 1-100000 -n 3000 | tr "\n" " "` à gérer
