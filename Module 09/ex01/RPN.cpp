@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 00:14:14 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/05 21:35:07 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:40:54 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ RPN::RPN(std::string input) {
 	size_t op = 0;
 
 	for(int i = len - 1; i >= 0; --i) {
-		if (std::isdigit(input[i] - '0')) {
-			std::cout << "test: " << input[i] << std::endl;
+		if (std::isdigit(input[i])) {
 			this->_stack.push((input[i] - '0'));
 		}
 		else if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/') {
+			if (!std::isdigit(input[i + 1])) {
+				throw RPN::Args();
+			}
 			op++;
 			this->_stack.push(input[i]);
 		}
@@ -55,7 +57,7 @@ void RPN::RPNresult() {
     std::stack<int> temp = this->_stack;
 	int num1;
 	int num2;
-	int current;
+	int current = 0;
 
 	while(temp.size() > 1) {
 		if(!temp.empty() && temp.top() != 42 && temp.top() != 43 && temp.top() != 45 && temp.top() != 47) {
