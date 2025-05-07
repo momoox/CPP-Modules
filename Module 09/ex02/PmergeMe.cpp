@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:31 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/06 22:11:12 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/08 00:50:52 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,38 +165,128 @@ void	PmergeMe::_mergeDeque(std::deque<int>& left, std::deque<int>& right, std::d
 	_deque.resize(k);
 }
 
-void	PmergeMe::_DequeSort(std::deque<int>& _deque) {
-	size_t len = _deque.size();
-	size_t mid = 0;
+// void	PmergeMe::_DequeSort(std::deque<int>& _deque) {
+// 	size_t len = _deque.size();
+// 	size_t mid = 0;
+
+// 	if(len < 2)
+// 		return;
+
+// 	mid = len / 2;
+// 	std::deque<int> left;
+// 	std::deque<int> right;
+// 	left.resize(mid);
+// 	right.resize(len - mid);
+
+// 	size_t j = 0;
+// 	for(size_t i = 0; i < len; ++i) {
+// 		if(i < mid) {
+// 			left[i] = _deque[i];
+// 			std::cout << "left: " << left[i] << std::endl;
+// 		}
+// 		else {
+// 			right[j] = _deque[i];
+// 			std::cout << "right: " << right[j] << std::endl;
+// 			j++;
+// 		}
+// 	}
+// 	std::cout << "<- first sort" << std::endl; 
+// 	_DequeSort(left);
+// 	std::cout << "<- second sort " << std::endl;
+// 	_DequeSort(right);
+// 	std::cout << "merge: " << std::endl;
+// 	_mergeDeque(left, right, _deque);
+// }
+
+int	PmergeMe::_DequeSortChecker() {
+	size_t i = 0;
+
+	while (i < _deque.size() - 1) {
+		if (_deque[i] > _deque[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+//▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖ ▗▖    ▗▄▄▄▖▗▖  ▗▖    ▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▄▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖ ▗▄▄▖
+//▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌▗▞▘      █  ▐▛▚▖▐▌    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌   
+//▐▌ ▐▌▐▌ ▐▌▐▛▀▚▖▐▛▚▖       █  ▐▌ ▝▜▌    ▐▛▀▘ ▐▛▀▚▖▐▌ ▐▌▐▌▝▜▌▐▛▀▚▖▐▛▀▀▘ ▝▀▚▖ ▝▀▚▖
+//▐▙█▟▌▝▚▄▞▘▐▌ ▐▌▐▌ ▐▌    ▗▄█▄▖▐▌  ▐▌    ▐▌   ▐▌ ▐▌▝▚▄▞▘▝▚▄▞▘▐▌ ▐▌▐▙▄▄▖▗▄▄▞▘▗▄▄▞▘
+
+
+void	PmergeMe::_DequeSort(int order) {
+	int len = _deque.size();
 
 	if(len < 2)
 		return;
 
-	mid = len / 2;
-	std::deque<int> left;
-	std::deque<int> right;
-	left.resize(mid);
-	right.resize(len - mid);
+	int idx = order - 1;
+	int idxBis = order;
+	// int exit = 0;
 
-	size_t j = 0;
-	for(size_t i = 0; i < len; ++i) {
-		if(i < mid) {
-			left[i] = _deque[i];
-			std::cout << "left: " << left[i] << std::endl;
+	std::cout << "ORDER IS " << order << std::endl << std::endl;
+	
+	while( idxBis <= len ) {
+		std::cout << "idx= " << idx << " | idxBis= " << idxBis << " | len: " << len << std::endl;
+		_printBeforeDeque();
+		std::cout << std::endl;
+
+		if(_deque[idx] > _deque[idxBis] && _deque[idxBis]) {
+			int copyIdx = _deque[idx];
+			int copyIdxBis = _deque[idxBis];
+
+			std::cout << "copyIdx: " << copyIdx << " | copyIdxBis: " << copyIdxBis << std::endl;
+
+			_deque[idx] = copyIdxBis;
+			_deque[idxBis] = copyIdx;
+
+			std::cout << "dequeIdx: " << _deque[idx] << " | dequeIdxBis: " << _deque[idxBis] << std::endl;
+			// exit++;
 		}
-		else {
-			right[j] = _deque[i];
-			std::cout << "right: " << right[j] << std::endl;
-			j++;
-		}
+
+		idx = idx + 2;
+		idxBis = idx + 1; 
+		std::cout << std::endl;
+		_printBeforeDeque();
+		std::cout << std::endl;
 	}
-	std::cout << "<- first sort" << std::endl; 
-	_DequeSort(left);
-	std::cout << "<- second sort " << std::endl;
-	_DequeSort(right);
-	std::cout << "merge: " << std::endl;
-	_mergeDeque(left, right, _deque);
+
+	std::cout << "-----------------------------------------------------------------------------------" << std::endl; 
+	
+	std::cout << "END idx= " << idx << " | idxBis= " << idxBis << " | len: " << len << std::endl;
+	
+	if (_DequeSortChecker())
+		return ;
+	
+	else if (idx <= len) {
+		std::cout << "salut (:" << std::endl << std::endl; 
+		_DequeSort(order * 2);
+	}
+
+	// ne swap pas le dernier element de deque donc cest tout pourrit
+		
+	// else {
+	// 	std::cout << "OHOHOOOO" <<std::endl << std::endl;
+	// 	_DequeSort(1);
+	// }
+		
+	std::cout << "coucou :)" << std::endl;
+	return ;
+	// std::cout << "<- second sort " << std::endl;
+	//_DequeSort(order + 1);
+	// std::cout << "merge: " << std::endl;
+	// _mergeDeque(left, right, _deque);
 }
+
+
+//▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖ ▗▖    ▗▄▄▄▖▗▖  ▗▖    ▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▄▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖ ▗▄▄▖
+//▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌▗▞▘      █  ▐▛▚▖▐▌    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌   
+//▐▌ ▐▌▐▌ ▐▌▐▛▀▚▖▐▛▚▖       █  ▐▌ ▝▜▌    ▐▛▀▘ ▐▛▀▚▖▐▌ ▐▌▐▌▝▜▌▐▛▀▚▖▐▛▀▀▘ ▝▀▚▖ ▝▀▚▖
+//▐▙█▟▌▝▚▄▞▘▐▌ ▐▌▐▌ ▐▌    ▗▄█▄▖▐▌  ▐▌    ▐▌   ▐▌ ▐▌▝▚▄▞▘▝▚▄▞▘▐▌ ▐▌▐▙▄▄▖▗▄▄▞▘▗▄▄▞▘
+
+
+
 
 void	PmergeMe::DequeCreation(std::string input) {
 	_parsing(input);
@@ -213,7 +303,7 @@ void	PmergeMe::DequeCreation(std::string input) {
 
 void	PmergeMe::DequeStart() {
 	_printBeforeDeque();
-	_DequeSort(_deque);
+	_DequeSort(1);
 	_printAfterDeque();
 
 	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : ";

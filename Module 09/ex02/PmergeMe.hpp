@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:35 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/06 21:42:18 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/08 00:29:52 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #define PMERGEME_HPP
 
 # include <iostream>
-#include <cstdlib>
+# include <algorithm>
+# include <cstdlib>
 # include <climits>
 # include <sstream>
 # include <cctype>
@@ -37,7 +38,9 @@ private:
 	void						_printBeforeMap();
 	void						_printAfterMap();
 
-	void						_DequeSort(std::deque<int>& _deque);
+	int							_DequeSortChecker();
+	
+	void						_DequeSort(int order);
 	void						_mergeDeque(std::deque<int>& left, std::deque<int>& right, std::deque<int>& result);
 	
 	void						_MapSort(std::map<int, std::string>& _map);

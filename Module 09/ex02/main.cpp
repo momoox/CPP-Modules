@@ -39,6 +39,8 @@ int	main(int argc, char** argv) {
 	double elapsed_seconds_deque = static_cast<double>(endDeque - startDeque) / CLOCKS_PER_SEC;
 	std::cout << std::fixed << std::setprecision(5) << elapsed_seconds_deque << "s" << std::endl;
 
+	return 0;
+	
 	i = 1;
 	startMap = clock();
 	try {
