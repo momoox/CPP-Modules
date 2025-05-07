@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:31 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/08 00:50:52 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/08 01:50:50 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,17 +259,17 @@ void	PmergeMe::_DequeSort(int order) {
 	if (_DequeSortChecker())
 		return ;
 	
-	else if (idx <= len) {
+	else if (idx != len) {
 		std::cout << "salut (:" << std::endl << std::endl; 
 		_DequeSort(order * 2);
 	}
 
-	// ne swap pas le dernier element de deque donc cest tout pourrit
+	// askip faut aller jusqu'a order 16 puis repasser a 8 et /2 pour insert les paires divise en plusieurs containers
 		
-	// else {
-	// 	std::cout << "OHOHOOOO" <<std::endl << std::endl;
-	// 	_DequeSort(1);
-	// }
+	else {
+		std::cout << "OHOHOOOO" <<std::endl << std::endl;
+		_DequeSort(1);
+	}
 		
 	std::cout << "coucou :)" << std::endl;
 	return ;
