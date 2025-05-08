@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:35 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/08 00:29:52 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:27:33 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 
 # include <iostream>
 # include <algorithm>
+# include <cmath>
+# include <iterator>
 # include <cstdlib>
 # include <climits>
 # include <sstream>
 # include <cctype>
 # include <ctime>
 # include <iomanip>
-# include <map>
+# include <list>
 # include <deque>
 
 class PmergeMe {
 private:
 	std::deque<int>				_deque;
-	std::map<int, std::string>	_map;
+	std::list<int>				_list;
 
 	void						_parsing(std::string input);
 	int							_stringToInt(std::string& input);
@@ -35,16 +37,18 @@ private:
 
 	void						_printBeforeDeque();
 	void						_printAfterDeque();
-	void						_printBeforeMap();
-	void						_printAfterMap();
+	void						_printBeforeList();
+	void						_printAfterList();
+
+	int							_Jacobsthal(int k);
 
 	int							_DequeSortChecker();
+	int							_ListSortChecker(std::list<int> &main);
 	
 	void						_DequeSort(int order);
-	void						_mergeDeque(std::deque<int>& left, std::deque<int>& right, std::deque<int>& result);
 	
-	void						_MapSort(std::map<int, std::string>& _map);
-	void						_mergeMap(std::map<int, std::string>& left, std::map<int, std::string>& right, std::map<int, std::string>& _deque);
+	void						_ListSort(std::list<int> &main, std::list<int> &pend, int order);
+	void						_MergeList(std::list<int>& main, std::list<int>& pend);
 
 public:
 	PmergeMe();
@@ -53,10 +57,10 @@ public:
 	PmergeMe& operator = (const PmergeMe& rhs);
 
 	void		DequeCreation(std::string input);
-	void		MapCreation(std::string input);
+	void		ListCreation(std::string input);
 
 	void		DequeStart();
-	void		MapStart();
+	void		ListStart();
 };
 
 #endif

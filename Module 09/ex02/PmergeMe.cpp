@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:31 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/08 01:50:50 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:55:39 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ PmergeMe::PmergeMe(const PmergeMe& src) {
 PmergeMe& PmergeMe::operator=(const PmergeMe& rhs) {
 	if(this != &rhs) {
 		this->_deque = rhs._deque;
-		this->_map = rhs._map;
+		this->_list = rhs._list;
 	}
 	
 	return(*this);
@@ -61,29 +61,29 @@ void	PmergeMe::_printAfterDeque() {
 		std::cout << std::endl;
 }
 
-void	PmergeMe::_printBeforeMap() {
+void	PmergeMe::_printBeforeList() {
 	int	count = 0;
 
 	std::cout << "Before: ";
-	std::map<int, std::string>::iterator it;
-	for(it = _map.begin(); it != _map.end() && count <= 5; ++it, ++count) {
-		std::cout << it->first << " ";
+	std::list<int>::iterator it;
+	for(it = _list.begin(); it != _list.end() && count <= 5; ++it, ++count) {
+		std::cout << *it << " ";
 	}
 	if(count > 5)
 		std::cout << "[...]";
 	std::cout << std::endl;
 }
 
-void	PmergeMe::_printAfterMap() {
+void	PmergeMe::_printAfterList() {
 	int	count = 0;
 
 	std::cout << "After: ";
-	std::map<int, std::string>::iterator it;
-	for(it = _map.begin(); it != _map.end() && count <= 5; ++it, ++count) {
-		std::cout << it->first << " ";
+	std::list<int>::iterator it;
+	for(it = _list.begin(); it != _list.end(); ++it, ++count) {
+		std::cout << *it << " ";
 	}
-	if(count > 5)
-		std::cout << "[...]";
+	// if(count > 5)
+	// 	std::cout << "[...]";
 	std::cout << std::endl;
 }
 
@@ -121,82 +121,54 @@ void	PmergeMe::_parsing(std::string input) {
 	}
 }
 
-void	PmergeMe::_mergeDeque(std::deque<int>& left, std::deque<int>& right, std::deque<int>& _deque) {
-	size_t i = 0;
-	size_t j = 0;
-	size_t k = 0;
-	int		lastInsert = -1;
-
-	while(i < left.size() && j < right.size()) {
-		if(left[i] < right[j]) {
-			if(lastInsert != left[i]){
-				_deque[k] = left[i];
-				lastInsert = left[i];
-				k++;
-			}
-			i++;
-		}
-		else {
-			if(lastInsert != right[j]){
-				_deque[k] = right[j];
-				lastInsert = right[j];
-				k++;
-			}
-			j++;
-		}
-	}
-
-	while(i < left.size()) {
-   	 if(lastInsert != left[i]) {
-   	     _deque[k] = left[i];
-   	     lastInsert = left[i];
-   	     k++;
-   	 }
-   	 i++;
-}	
-	while(j < right.size()) {
-    	if(lastInsert != right[j]) {
-    	    _deque[k] = right[j];
-    	    lastInsert = right[j];
-    	    k++;
-    	}
-    	j++;
-	}
-	_deque.resize(k);
+int	PmergeMe::_Jacobsthal(int k) {
+	return round((pow(2, k + 1) + pow(-1, k)) / 3);
 }
 
-// void	PmergeMe::_DequeSort(std::deque<int>& _deque) {
-// 	size_t len = _deque.size();
-// 	size_t mid = 0;
-
-// 	if(len < 2)
-// 		return;
-
-// 	mid = len / 2;
-// 	std::deque<int> left;
-// 	std::deque<int> right;
-// 	left.resize(mid);
-// 	right.resize(len - mid);
-
+// void	PmergeMe::_mergeDeque(std::deque<int>& left, std::deque<int>& right, std::deque<int>& _deque) {
+// 	size_t i = 0;
 // 	size_t j = 0;
-// 	for(size_t i = 0; i < len; ++i) {
-// 		if(i < mid) {
-// 			left[i] = _deque[i];
-// 			std::cout << "left: " << left[i] << std::endl;
+// 	size_t k = 0;
+// 	int		lastInsert = -1;
+
+// 	while(i < left.size() && j < right.size()) {
+// 		if(left[i] < right[j]) {
+// 			if(lastInsert != left[i]){
+// 				_deque[k] = left[i];
+// 				lastInsert = left[i];
+// 				k++;
+// 			}
+// 			i++;
 // 		}
 // 		else {
-// 			right[j] = _deque[i];
-// 			std::cout << "right: " << right[j] << std::endl;
+// 			if(lastInsert != right[j]){
+// 				_deque[k] = right[j];
+// 				lastInsert = right[j];
+// 				k++;
+// 			}
 // 			j++;
 // 		}
 // 	}
-// 	std::cout << "<- first sort" << std::endl; 
-// 	_DequeSort(left);
-// 	std::cout << "<- second sort " << std::endl;
-// 	_DequeSort(right);
-// 	std::cout << "merge: " << std::endl;
-// 	_mergeDeque(left, right, _deque);
+
+// 	while(i < left.size()) {
+//    	 if(lastInsert != left[i]) {
+//    	     _deque[k] = left[i];
+//    	     lastInsert = left[i];
+//    	     k++;
+//    	 }
+//    	 i++;
+// }	
+// 	while(j < right.size()) {
+//     	if(lastInsert != right[j]) {
+//     	    _deque[k] = right[j];
+//     	    lastInsert = right[j];
+//     	    k++;
+//     	}
+//     	j++;
+// 	}
+// 	_deque.resize(k);
 // }
+
 
 int	PmergeMe::_DequeSortChecker() {
 	size_t i = 0;
@@ -209,11 +181,6 @@ int	PmergeMe::_DequeSortChecker() {
 	return (1);
 }
 
-//▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖ ▗▖    ▗▄▄▄▖▗▖  ▗▖    ▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▄▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖ ▗▄▄▖
-//▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌▗▞▘      █  ▐▛▚▖▐▌    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌   
-//▐▌ ▐▌▐▌ ▐▌▐▛▀▚▖▐▛▚▖       █  ▐▌ ▝▜▌    ▐▛▀▘ ▐▛▀▚▖▐▌ ▐▌▐▌▝▜▌▐▛▀▚▖▐▛▀▀▘ ▝▀▚▖ ▝▀▚▖
-//▐▙█▟▌▝▚▄▞▘▐▌ ▐▌▐▌ ▐▌    ▗▄█▄▖▐▌  ▐▌    ▐▌   ▐▌ ▐▌▝▚▄▞▘▝▚▄▞▘▐▌ ▐▌▐▙▄▄▖▗▄▄▞▘▗▄▄▞▘
-
 
 void	PmergeMe::_DequeSort(int order) {
 	int len = _deque.size();
@@ -221,72 +188,32 @@ void	PmergeMe::_DequeSort(int order) {
 	if(len < 2)
 		return;
 
-	int idx = order - 1;
-	int idxBis = order;
-	// int exit = 0;
-
-	std::cout << "ORDER IS " << order << std::endl << std::endl;
+	int idx = 0;
+	int idxBis = 1;
 	
-	while( idxBis <= len ) {
-		std::cout << "idx= " << idx << " | idxBis= " << idxBis << " | len: " << len << std::endl;
-		_printBeforeDeque();
-		std::cout << std::endl;
-
-		if(_deque[idx] > _deque[idxBis] && _deque[idxBis]) {
+	while (idx < len - 1) {
+		if(_deque[idx] > _deque[idxBis]) {
 			int copyIdx = _deque[idx];
 			int copyIdxBis = _deque[idxBis];
-
-			std::cout << "copyIdx: " << copyIdx << " | copyIdxBis: " << copyIdxBis << std::endl;
-
+			
 			_deque[idx] = copyIdxBis;
 			_deque[idxBis] = copyIdx;
-
-			std::cout << "dequeIdx: " << _deque[idx] << " | dequeIdxBis: " << _deque[idxBis] << std::endl;
-			// exit++;
 		}
-
-		idx = idx + 2;
-		idxBis = idx + 1; 
-		std::cout << std::endl;
-		_printBeforeDeque();
-		std::cout << std::endl;
+		idx++;
+		idxBis++;
 	}
-
-	std::cout << "-----------------------------------------------------------------------------------" << std::endl; 
-	
-	std::cout << "END idx= " << idx << " | idxBis= " << idxBis << " | len: " << len << std::endl;
 	
 	if (_DequeSortChecker())
 		return ;
 	
-	else if (idx != len) {
-		std::cout << "salut (:" << std::endl << std::endl; 
+	else if (order < 16) {
 		_DequeSort(order * 2);
 	}
-
-	// askip faut aller jusqu'a order 16 puis repasser a 8 et /2 pour insert les paires divise en plusieurs containers
 		
 	else {
-		std::cout << "OHOHOOOO" <<std::endl << std::endl;
 		_DequeSort(1);
 	}
-		
-	std::cout << "coucou :)" << std::endl;
-	return ;
-	// std::cout << "<- second sort " << std::endl;
-	//_DequeSort(order + 1);
-	// std::cout << "merge: " << std::endl;
-	// _mergeDeque(left, right, _deque);
 }
-
-
-//▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖ ▗▖    ▗▄▄▄▖▗▖  ▗▖    ▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▄▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖ ▗▄▄▖
-//▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌▗▞▘      █  ▐▛▚▖▐▌    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌   
-//▐▌ ▐▌▐▌ ▐▌▐▛▀▚▖▐▛▚▖       █  ▐▌ ▝▜▌    ▐▛▀▘ ▐▛▀▚▖▐▌ ▐▌▐▌▝▜▌▐▛▀▚▖▐▛▀▀▘ ▝▀▚▖ ▝▀▚▖
-//▐▙█▟▌▝▚▄▞▘▐▌ ▐▌▐▌ ▐▌    ▗▄█▄▖▐▌  ▐▌    ▐▌   ▐▌ ▐▌▝▚▄▞▘▝▚▄▞▘▐▌ ▐▌▐▙▄▄▖▗▄▄▞▘▗▄▄▞▘
-
-
-
 
 void	PmergeMe::DequeCreation(std::string input) {
 	_parsing(input);
@@ -305,63 +232,154 @@ void	PmergeMe::DequeStart() {
 	_printBeforeDeque();
 	_DequeSort(1);
 	_printAfterDeque();
-
+	
 	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : ";
 }
 
-void	PmergeMe::_mergeMap(std::map<int, std::string>& left, std::map<int, std::string>& right, std::map<int, std::string>& _map) {
-	std::map<int, std::string>::iterator it1 = left.begin();
-	std::map<int, std::string>::iterator it2 = right.begin();
+void	PmergeMe::_MergeList(std::list<int>& main, std::list<int>& pend) {
 
-	while(it1 != left.end() && it2 != right.end()) {
-		if(it1->first < it2->first) {
-			_map.insert(std::pair<int, std::string>(it1->first, it1->second));
-			it1++;
+	std::cout << "-----------------------MERGE TIME-----------------------" << std::endl << std::endl;
+	
+	std::list<int>::iterator end;
+	
+	if (pend.size() == 1) {
+		end = std::upper_bound(main.begin(), main.end(), *pend.begin());
+        main.insert(end, *pend.begin());
+    }
+	
+	int jc = 3;
+	int count = 0;
+	size_t idx;
+	size_t decrease;
+	
+	while (!pend.empty()) {
+		idx = _Jacobsthal(jc) - _Jacobsthal(jc - 1);
+		std::cout << "idx: " << idx << " | pend size: " << pend.size() << std::endl;
+		if (idx > pend.size())
+			idx = pend.size();
+
+		decrease = 0;
+		while (idx) {
+			// Determine the insertion point based on the Jacobsthal index and insert the element.
+			end = main.begin();
+			std::cout << "premier if: " << _Jacobsthal(jc + count) - decrease << std::endl;
+			if (_Jacobsthal(jc + count) - decrease <= main.size()) {
+				end = main.begin();
+				std::advance(end, _Jacobsthal(jc + count) - decrease);
+				std::cout << "end dans premier if: " << *end << std::endl;
+			}
+			else
+				end = main.end();
+			// Binary sort 
+			end = std::upper_bound(main.begin(), end, (*(pend.begin()) + idx - 1));
+			
+			main.insert(end, (*(pend.begin()) + idx - 1));
+			end = pend.begin();
+			std::advance(end, idx - 1);
+			pend.erase(end);
+
+			idx--;
+			decrease++;
+			count++;
 		}
-		else {
-			_map.insert(std::pair<int, std::string>(it2->first, it2->second));
-			it2++;
-		}
+		jc++;
 	}
-	while(it1 != left.end()) {
-		_map.insert(std::pair<int, std::string>(it1->first, it1->second));
-		it1++;
-	}
-	while(it2 != right.end()) {
-		_map.insert(std::pair<int, std::string>(it2->first, it2->second));
-		it2++;
-	}
+
+	//6 87 45 987 23 3 397 74 5 90 265 19 56
+	//3 5 6 6 7 8 9 23 45 87 397 398 987 
+	//il est pas en forme le frerot
+	
+	// while (!main.empty() && !pend.empty()) {
+	// 	std::cout << "current main: " << main.front() << " | current pend: " << pend.front() << std::endl;	
+	// 	if (main.front() < pend.front()) {
+	// 		result.push_back(main.front());
+	// 		main.pop_front();
+	// 	} else {
+	// 		result.push_back(pend.front());
+	// 		pend.pop_front();
+	// 	}
+	// }
+	
+	// while (!main.empty()) {
+	// 	result.push_back(main.front());
+	// 	main.pop_front();
+	// }
+	
+	// while (!pend.empty()) {
+	// 	result.push_back(pend.front());
+	// 	pend.pop_front();
+	// }
+	
+	_list = main;
 }
 
-void	PmergeMe::_MapSort(std::map<int, std::string>& _map) {
-	size_t len = _map.size();
-	size_t mid = 0;
+int	PmergeMe::_ListSortChecker(std::list<int> &main) {
+	size_t i = 0;
 
-	if(len < 2)
+	std::list<int>::iterator idx = main.begin();
+	std::list<int>::iterator idxBis = idx;
+	std::advance(idxBis, 1);
+	
+	while (i < main.size() - 1) {
+		if (*idx > *idxBis)
+			return (0);
+		i++;
+		idx++;
+		idxBis++;
+	}
+	return (1);
+}
+
+
+//▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖ ▗▖    ▗▄▄▄▖▗▖  ▗▖    ▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▄▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖ ▗▄▄▖
+//▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌▗▞▘      █  ▐▛▚▖▐▌    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌   
+//▐▌ ▐▌▐▌ ▐▌▐▛▀▚▖▐▛▚▖       █  ▐▌ ▝▜▌    ▐▛▀▘ ▐▛▀▚▖▐▌ ▐▌▐▌▝▜▌▐▛▀▚▖▐▛▀▀▘ ▝▀▚▖ ▝▀▚▖
+//▐▙█▟▌▝▚▄▞▘▐▌ ▐▌▐▌ ▐▌    ▗▄█▄▖▐▌  ▐▌    ▐▌   ▐▌ ▐▌▝▚▄▞▘▝▚▄▞▘▐▌ ▐▌▐▙▄▄▖▗▄▄▞▘▗▄▄▞▘
+
+
+void	PmergeMe::_ListSort(std::list<int> &main, std::list<int> &pend, int order) {
+	if (_list.size() < 2)
 		return;
 
-	mid = len / 2;
-	std::map<int, std::string> left;
-	std::map<int, std::string> right;
+	//std::cout << "-----------------ORDER " << order << "------------------------" << std::endl << std::endl;
 
-	size_t i = 0;
-	std::map<int, std::string>::iterator it = _map.begin();
-	while(it != _map.end()) {
-		if(i < mid) {
-			left.insert(std::pair<int, std::string>(it->first, it->second));
+	std::list<int>::iterator idx = main.begin();
+	std::list<int>::iterator idxBis = idx;
+	std::advance(idxBis, 1);
+	
+	for(; idxBis != main.end(); idx++) {
+		//std::cout << "current idx: " << *idx << " current idxBis: " << *idxBis << std::endl << std::endl;
+		if (*idx > *idxBis) {
+			//std::cout << "before swap" << std::endl;
+			//std::cout << "idx: " << *idx << " idxBis: " << *idxBis << std::endl << std::endl;
+			int copy = *idxBis;
+			*idxBis = *idx;
+			*idx = copy;
+			//std::cout << "after swap" << std::endl;
+			//std::cout << "idx: " << *idx << " idxBis: " << *idxBis << std::endl << std::endl;
 		}
-		else {
-			right.insert(std::pair<int, std::string>(it->first, it->second));
-		}
-		i++;
-		it++;
+		idxBis++;
 	}
-	_MapSort(left);
-	_MapSort(right);
-	_mergeMap(left, right, _map);
+	
+	if (_ListSortChecker(main))
+		_MergeList(main, pend);
+		
+	else if (order < 16)
+		_ListSort(main, pend, order * 2);
+	
+	else
+		_ListSort(main, pend, 1);
+	
 }
 
-void	PmergeMe::MapCreation(std::string input) {
+
+//▗▖ ▗▖ ▗▄▖ ▗▄▄▖ ▗▖ ▗▖    ▗▄▄▄▖▗▖  ▗▖    ▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▄▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖ ▗▄▄▖
+//▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌▗▞▘      █  ▐▛▚▖▐▌    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌   
+//▐▌ ▐▌▐▌ ▐▌▐▛▀▚▖▐▛▚▖       █  ▐▌ ▝▜▌    ▐▛▀▘ ▐▛▀▚▖▐▌ ▐▌▐▌▝▜▌▐▛▀▚▖▐▛▀▀▘ ▝▀▚▖ ▝▀▚▖
+//▐▙█▟▌▝▚▄▞▘▐▌ ▐▌▐▌ ▐▌    ▗▄█▄▖▐▌  ▐▌    ▐▌   ▐▌ ▐▌▝▚▄▞▘▝▚▄▞▘▐▌ ▐▌▐▙▄▄▖▗▄▄▞▘▗▄▄▞▘
+
+
+void	PmergeMe::ListCreation(std::string input) {
 	_parsing(input);
 	
 	std::istringstream iss(input);
@@ -370,15 +388,20 @@ void	PmergeMe::MapCreation(std::string input) {
 		if(token.empty()) {
 			break;
 		}
-		_map.insert(std::pair<int, std::string>(PmergeMe::_stringToInt(token), token));
+		_list.push_back(_stringToInt(token));
 	}
 }
 
-void	PmergeMe::MapStart() {
+void	PmergeMe::ListStart() {
 
-	// _printBeforeMap();
-	_MapSort(_map);
-	// _printAfterMap();
+	// _printBeforeList();
+	std::list<int>::iterator midIt = _list.begin();
+	std::advance(midIt, _list.size() / 2);
+	std::list<int> main(_list.begin(), midIt);
+	std::list<int> pend(midIt, _list.end());
 	
-	std::cout << "Time to process a range of " << _map.size() << " elements with std::map : ";
+	_ListSort(main, pend, 1);
+	_printAfterList();
+	
+	std::cout << "Time to process a range of " << _list.size() << " elements with std::map : ";
 }
