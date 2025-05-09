@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:50:07 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/08 16:57:07 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:00:31 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,29 @@ int	main(int argc, char** argv) {
 
 	int	i = 1;
 	PmergeMe merge;
-	// clock_t startDeque, endDeque;
+	clock_t startDeque, endDeque;
 	clock_t startList, endList;
-	//je crois que je vais utiliser list plutot
 
 	if(argc == 1) {
 		std::cout << "Wrong number of arguments. Please type some values." << std::endl;
 		exit(1);
 	}
 	
-	// startDeque = clock();
-	// try {
-	// 	while(i < argc)
-	// 		merge.DequeCreation(argv[i++]);
-	// 	merge.DequeStart();
-	// }
-	// catch (std::exception& e) {
-	// 	std::cout << e.what();
-	// 	return(1);
-	// }
-	// endDeque = clock();
-	// double elapsed_seconds_deque = static_cast<double>(endDeque - startDeque) / CLOCKS_PER_SEC;
-	// std::cout << std::fixed << std::setprecision(5) << elapsed_seconds_deque << "s" << std::endl;
-
-	// return 0;
+	startDeque = clock();
+	try {
+		while(i < argc)
+			merge.DequeCreation(argv[i++]);
+		merge.DequeStart();
+	}
+	catch (std::exception& e) {
+		std::cout << e.what();
+		return(1);
+	}
+	endDeque = clock();
+	double elapsed_seconds_deque = static_cast<double>(endDeque - startDeque) / CLOCKS_PER_SEC;
+	std::cout << std::fixed << std::setprecision(5) << elapsed_seconds_deque << "s" << std::endl;
 	
-	// i = 1;
+	i = 1;
 	startList = clock();
 	try {
 		while(i < argc)

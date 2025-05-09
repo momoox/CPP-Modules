@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:35 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/08 19:27:33 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:59:47 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ private:
 	int							_Jacobsthal(int k);
 
 	int							_DequeSortChecker();
-	int							_ListSortChecker(std::list<int> &main);
+	int							_ListSortChecker(std::list<int>& main);
 	
 	void						_DequeSort(int order);
+	void						_MergeDeque(std::deque<int>& main, std::deque<int>& pend);
 	
-	void						_ListSort(std::list<int> &main, std::list<int> &pend, int order);
+	void						_ListSort(std::list<int>& main, std::list<int>& pend, int order);
 	void						_MergeList(std::list<int>& main, std::list<int>& pend);
 
 public:
