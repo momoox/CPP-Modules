@@ -6,7 +6,7 @@
 /*   By: mgeisler <mgeisler@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:00:31 by mgeisler          #+#    #+#             */
-/*   Updated: 2025/05/09 19:07:01 by mgeisler         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:34:48 by mgeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,8 @@ int	PmergeMe::_Jacobsthal(int k) {
 	return round((pow(2, k + 1) + pow(-1, k)) / 3);
 }
 
-
-void	PmergeMe::_MergeDeque(std::deque<int>& main, std::deque<int>& pend) {
-	std::deque<int>::iterator end;
+void PmergeMe::_MergeDeque(std::deque<int>& main, std::deque<int>& pend) {
+    std::deque<int>::iterator end;
 
     if (pend.size() == 1) {
         end = std::upper_bound(main.begin(), main.end(), pend[0]);
@@ -139,6 +138,7 @@ void	PmergeMe::_MergeDeque(std::deque<int>& main, std::deque<int>& pend) {
     size_t decrease;
     
     while (!pend.empty()) {
+        // Calcul de l'indice à partir des nombres de Jacobsthal
         idx = _Jacobsthal(jc) - _Jacobsthal(jc - 1);
         
         if (idx > pend.size())
@@ -147,17 +147,19 @@ void	PmergeMe::_MergeDeque(std::deque<int>& main, std::deque<int>& pend) {
         decrease = 0;
         
         while (idx) {
-            end = main.begin();
-            
+            // Position de recherche
             if (_Jacobsthal(jc + count) - decrease <= main.size())
-                end = main.begin() + (_Jacobsthal(jc + count) - decrease);
-
+                end = main.begin() + std::min(static_cast<size_t>(_Jacobsthal(jc + count) - decrease), main.size());
             else
                 end = main.end();
             
+            // Élément à insérer
             int targetValue = pend[idx - 1];
+            
+            // Trouver la position d'insertion correcte
             end = std::upper_bound(main.begin(), end, targetValue);
             
+            // Insérer l'élément et supprimer de pend
             main.insert(end, targetValue);
             pend.erase(pend.begin() + (idx - 1));
             
@@ -167,8 +169,6 @@ void	PmergeMe::_MergeDeque(std::deque<int>& main, std::deque<int>& pend) {
         }
         jc++;
     }
-    
-    _deque = main;
 }
 
 
@@ -184,7 +184,7 @@ int	PmergeMe::_DequeSortChecker() {
 }
 
 
-void	PmergeMe::_DequeSort(int order) {
+void	PmergeMe::_DequeSort(std::deque<int> &main, std::deque<int> &pend, int order) {
 	int len = _deque.size();
 
 	if(len < 2)
@@ -206,14 +206,14 @@ void	PmergeMe::_DequeSort(int order) {
 	}
 	
 	if (_DequeSortChecker())
-		return ;
+		_MergeDeque(main, pend) ;
 	
 	else if (order < 16) {
-		_DequeSort(order * 2);
+		_DequeSort(main, pend, order * 2);
 	}
 		
 	else {
-		_DequeSort(1);
+		_DequeSort(main, pend, 1);
 	}
 }
 
@@ -230,9 +230,14 @@ void	PmergeMe::DequeCreation(std::string input) {
 	}
 }
 
+
 void	PmergeMe::DequeStart() {
 	_printBeforeDeque();
-	_DequeSort(1);
+
+	size_t mid = _deque.size() / 2;
+	std::deque<int> main(_deque.begin(), _deque.begin() + mid);
+	std::deque<int> pend(_deque.begin() + mid, _deque.end());
+	_DequeSort(main, pend, 1);
 	_printAfterDeque();
 	
 	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : ";
